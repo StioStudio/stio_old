@@ -9,6 +9,7 @@ let doc = document
     sprites: "help",
     img: "help",
     sound: "help",
+    html: "help",
 }
 
 /** @default
@@ -565,3 +566,18 @@ function positionDot(e, dot) {
     dot.style.backgroundColor = "#ff0000"
 }
 */
+
+let html = {
+
+    style:{
+
+        backgroundColor: "#ff0000",
+
+    },
+    
+    make(element){
+
+        
+
+    }
+}
