@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/x-icon" href="../../bilder/Epple.ico">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perlin Noise</title>
+    <link rel="stylesheet" href="../../css/color.css">
+</head>
+
+<body>
+    <div id="topnav">
+
+        <a id="active" href="start.html">StioStudio</a>
+
+        <a href="">nothing</a>
+        
+    </div>
+
+    <h2>this is not working for the second</h2>
+    
+    <canvas style="border: 2px solid black;"></canvas>
+
+</body>
+
+<script>
+    /** @type {HTMLCanvasElement} */
+    const canvas = document.querySelector("canvas");
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth - 40;
+    canvas.height = window.innerHeight - 140;
+
+
+    var lx;
+    var ly;
+    var gen = [];
+    var i;
+    var x;
+    var y;
+
+
+
+
+    function lt() {
+        gen = []
+        i = 0
+        for (let step6 = 0; step6 < lx; step6++){
+            gen.push(0)
+            i += 1
+            for (step = 0; step < ly - 1; step++) {
+                i += 1
+                gen.push(Math.random())
+            }
+        }
+    }
+
+
+
+    function av(g) {
+        for (step3 = 0; step3 < g; step3++) {
+            i = 0
+            for (step4 = 0; step4 < lx * (ly-1); step4++){
+                i += 1
+                gen[i] = ((gen[i - 1] + gen[i + 1] + gen[i - ly] + gen[i + ly] + gen[i]) / 5)
+            }
+        }
+    }
+
+
+
+    function lag(){
+        ctx.fillStyle = "rgba(0, 0, 0, 0)"
+        i = 0
+        y = 100
+        for (step1 = 0; step1 < lx-4; step1++){
+            y += 1
+            x = 100
+            for (step2 = 0; step2 < ly; step2++){
+                x += 1
+                i += 1
+                ctx.fillStyle = "rgba(0, 0, 0, "+ gen[i] +")"
+                ctx.fillRect(x, y, 1, 1)
+            }
+        }
+        
+    }
+
+
+
+    lx = 200
+    ly = 200
+    lt()
+    av(10)
+    console.log(gen)
+
+</script>
+
+</html>
