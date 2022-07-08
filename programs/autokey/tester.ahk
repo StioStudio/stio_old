@@ -3,11 +3,13 @@
 SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 
-^+g::
-Run, https://github.com/
-return
+^r::Reload
 
-^+s::
-Run, https://scratch.mit.edu/
+^+p::
+MouseGetPos, mousex, mousey
+InputBox, output , print, print what?, Show, 200, 200, %mousex%, %mousey%, 640, 480
+Send, %output%
 Return
 
+#o::
+Return
