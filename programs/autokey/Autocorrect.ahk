@@ -98,7 +98,7 @@ Return
 ; Get the selected text. The clipboard is used instead of "ControlGet Selected"
 ; as it works in more editors and word processors, java apps, etc. Save the
 ; current clipboard contents to be restored later.
-AutoTrim Off  ; Retain any leading and trailing whitespace on the clipboard.
+AutoTrim Off  ; Retain any leadnig and trailing whitespace on the clipboard.
 ClipboardOld = %ClipboardAll%
 Clipboard =  ; Must start off blank for detection to work.
 Send ^c
