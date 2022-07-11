@@ -56,6 +56,14 @@ Return
 Send, simon.s.johanssen@gmail.com
 Return
 
+::ss\::
+Send, stio studio
+Return
+
+::s_s\::
+Send, stio_studio
+Return
+
 ::ahk\::
 Send, AutoHotkey
 Return
