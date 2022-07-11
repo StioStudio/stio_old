@@ -60,16 +60,8 @@ Return
 Send, stio studio
 Return
 
-::SS\::
-Send, Stio Studio
-Return
-
 ::s_s\::
 Send, stio_studio
-Return
-
-::S_S\::
-Send, Stio_Studio
 Return
 
 ::ahk\::

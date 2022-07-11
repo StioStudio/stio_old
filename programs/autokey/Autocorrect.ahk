@@ -92,9 +92,9 @@ Return
 
 
 ;------------------------------------------------------------------------------
-; Win+H to enter misspelling correction.  It will be added to this script.
+; Win+k to enter misspelling correction.  It will be added to this script.
 ;------------------------------------------------------------------------------
-#h::
+#k::
 ; Get the selected text. The clipboard is used instead of "ControlGet Selected"
 ; as it works in more editors and word processors, java apps, etc. Save the
 ; current clipboard contents to be restored later.
