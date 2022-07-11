@@ -3,7 +3,9 @@
 SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 
-^r::Reload
+#r::Reload
+
+SetNumLockState, AlwaysOn
 
 ::ssj\::
 ø:= "ø"
@@ -110,8 +112,8 @@ If (var = "github") {
     Run, "C:\Users\espen\Desktop\Minecraft Launcher"
 
 } Else If (var = "val" or var = "VALORANT"){
-    Run, "C:/Riot Games/Riot Client"
-
+    Run, "C:\Riot Games\Riot Client\RiotClientServices.exe" --launch-product=valorant --launch-patchline=live
+    |
 } Else If (var = "roblox"){
     Run, https://www.roblox.com/home
 
