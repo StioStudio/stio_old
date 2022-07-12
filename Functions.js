@@ -61,6 +61,23 @@ let doc = document
 
 }
 
+
+function text(..._num_or_func){
+
+    let out = `${_num_or_func}`
+    return( out )
+
+}
+
+function T_F(...text_to_func){
+
+    let out = Function(text_to_func)
+    return( out )
+
+}
+
+let enter = "\n"
+
 /**
  * @default 
  * place all of your code in her
@@ -69,12 +86,7 @@ function setup(_text) {
 
     naf.makeDivId("pen")
     
-
-    setTimeout(()=>{
-
-        _text()
-
-    }, 500)
+    requestAnimationFrame(_text)
 
 }
 
@@ -235,22 +247,14 @@ let pen = {
         return ( x );
  }
  */
-let lerp  = {
-    x(x1, x2, _percent){
-        let percent = _percent * 2;
-        let x =  ((x1 * (2 - percent)) + (x2 * percent)) / 2;
-        
-        return ( x );
-    },
 
-    y(y1, y2, _percent){
-        
-        let percent = _percent * 2;
-        
-        let y =  ((y1 * (2 - percent)) + (y2 * percent)) / 2;
-        
-        return ( y );
-    },
+function lerp(a, b, _percent){
+
+    let percent = _percent * 2;
+    let out =  ((a * (2 - percent)) + (b * percent)) / 2;
+    
+    return ( out );
+
 }
 
 /** @default
@@ -410,24 +414,10 @@ let sound = {
 }
 */
 
-let sprites = {
-
-
-
+function rgb(red, green, blue){
+    return("#" + naf.TenToHex(red) + naf.TenToHex(green) + naf.TenToHex(blue))
 }
 
-let color = {
-
-    hwb(){
-
-    },
-    rgb(red, green, blue){
-
-        return("#" + naf.TenToHex(red) + naf.TenToHex(green) + naf.TenToHex(blue))
-
-    },
-
-}
 
 let eventer = {
     listen(_name_, _text){
