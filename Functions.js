@@ -127,7 +127,9 @@ let pen = {
 
             this.width = 100
 
-            this.position = "absolute"
+            this.position = "absolute",
+
+            this.borderRadius = "0%"
 
         },
 
@@ -192,8 +194,8 @@ let pen = {
             div.style.backgroundColor = pen.style.color
             div.style.height = pen.style.height+"px"
             div.style.width = pen.style.width+"px"
-            div.style.top =  this.y+"px"
-            div.style.left = this.x+"px"
+            div.style.top =  (this.y - this.style.height)+"px"
+            div.style.left = (this.x - this.style.width)+"px"
             div.style.borderRadius = this.style.borderRadius
             div.style.transform = "rotate("+ (this.rotation) +"deg)"
             
@@ -201,28 +203,6 @@ let pen = {
             document.getElementById("pen").appendChild(div);
     },
     
-    /** @default
-     * Makes a rectangle on the html/website.
-     */
-
-    async image(_img, xPostion, yPostion){
-        
-        let div = await loadImage(_img)
-        div.id = _img
-        
-        div.style.position = pen.style.position
-        div.style.height = pen.style.height+"px"
-        div.style.width = pen.style.width+"px"
-        div.style.top =  this.y+"px"
-        div.style.left = this.x+"px"
-        div.style.borderRadius = this.style.borderRadius
-        div.style.transform = "rotate("+ (pen.rotation) +"deg)"
-    
-        document.getElementById("pen").appendChild(div)
-        
-        naf.penready = false
-
-    },
     clear(){
 
         document.getElementById("pen").innerHTML = ""

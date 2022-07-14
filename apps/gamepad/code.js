@@ -42,7 +42,74 @@ function playVibration() {
 }
 */
 
+function makeRigthStick(){
+    pen.style.height = 100
+    pen.style.width = 100
+    pen.style.borderRadius = "50%"
+    // If you click on R3, the joystick color gets darkened
+    if (gamepad.buttons[11].pressed) {
+        pen.style.color = rgb(0, 120, 120)
+    }
+    else {
+        pen.style.color = rgb(0, 200, 200)
+    }
+    // pen.style.color = color.rgb(0, 200, 200)
+    pen.x = gamepad.axes[2] * 100 + 900;
+    pen.y = gamepad.axes[3] * 100 + 400;
+   
+    pen.rectangle()
+    //resets(makes them to defoult) all styles on pen
+    pen.style.reset()
+    pen.style.height = 10
+    pen.style.width = 150
+    pen.style.color = rgb(0,0,0)
+    pen.y += 0
+    pen.x -= 0
+    pen.rectangle()
+    
+    pen.style.reset()
+    pen.style.width = 10
+    pen.style.height = 150
+    pen.style.color = rgb(0,0,0)
+    pen.y -= 0
+    pen.x += 0
+    pen.rectangle()
+}
 
+function makeLeftStick(){
+    pen.style.height = 100
+    pen.style.width = 100
+    pen.style.borderRadius = "50%"
+    
+    // If you click on L3, the joy stick color gets darkened
+    if (gamepad.buttons[10].pressed) {
+        pen.style.color = rgb(120, 120, 0)
+    }
+    else {
+        pen.style.color = rgb(200, 200, 0)
+    }
+    // pen.style.color = color.rgb(200, 200, 0)
+    pen.x = gamepad.axes[0] * 100 + 500;
+    pen.y = gamepad.axes[1] * 100 + 400;
+    pen.rectangle()
+    
+    //resets(makes them to defoult) all styles on pen
+    pen.style.reset()
+    pen.style.height = 10
+    pen.style.width = 150
+    pen.style.color = rgb(0,0,0)
+    pen.y += 0
+    pen.x -= 0
+    pen.rectangle()
+    
+    pen.style.reset()
+    pen.style.width = 10
+    pen.style.height = 150
+    pen.style.color = rgb(0,0,0)
+    pen.y -= 0
+    pen.x += 0
+    pen.rectangle()
+}
 
     
 var gamepads = {};
@@ -59,46 +126,36 @@ window.addEventListener("gamepadconnected",
 );
 
 
-pen.style.height = 100
-pen.style.width = 100
-pen.style.borderRadius = "50%"
 
 addEventListener("gamepadconnected", () => {
-    updateControllers()
-
-    pen.clear()
-    
-    // If you click on L3, the joy stick color gets darkened
-    if (gamepad.buttons[10].pressed) {
-        pen.style.color = rgb(120, 120, 0)
-    }
-    else {
-        pen.style.color = rgb(200, 200, 0)
-    }
-    // pen.style.color = color.rgb(200, 200, 0)
-    pen.x = gamepad.axes[0] * 100 + (window.innerHeight/2+100);
-    pen.y = gamepad.axes[1] * 100 + (window.innerHeight/2);
-    pen.rectangle()
-    
-    // If you click on R3, the joystick color gets darkened
-    if (gamepad.buttons[11].pressed) {
-        pen.style.color = rgb(0, 120, 120)
-    }
-    else {
-        pen.style.color = rgb(0, 200, 200)
-    }
-    // pen.style.color = color.rgb(0, 200, 200)
-    pen.x = gamepad.axes[2] * 100 + (window.innerHeight/2+400);
-    pen.y = gamepad.axes[3] * 100 + (window.innerHeight/2);    
-    pen.rectangle()
+repeat.forever(()=>{
 
 
+updateControllers()
 
-    
+pen.clear()
+
+pen.style.reset()
+pen.style.color = rgb(250, 250, 0)
+pen.x = 900
+pen.y = 400
+pen.style.borderRadius = "50%"
+pen.rectangle()
+
+makeRigthStick()
+makeLeftStick()
 
 
+})
 });
 
+/*
+setInterval(()=>{
+
+    say(gamepad)
+    
+}, 1000)
+*/
     
 var btns = document.createElement("div");
     var playVbrtion = document.createElement("button");
