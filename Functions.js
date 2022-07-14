@@ -127,7 +127,7 @@ let pen = {
 
         reset(){
 
-            this.color = "#00000000"
+            this.color = "#ff0000"
 
             this.height = 100
 
@@ -135,7 +135,11 @@ let pen = {
 
             this.position = "absolute",
 
-            this.borderRadius = "0%"
+            this.Radius = "0%"
+
+            this.borderSize = 0
+            
+            this.borderColor = "#000000"
 
         },
 
@@ -167,7 +171,11 @@ let pen = {
 
         height: 100,
 
-        borderRadius: "0%",
+        radius: "0%",
+
+        borderSize: 0,
+
+        borderColor: "#000000"
 
     },
 
@@ -202,7 +210,8 @@ let pen = {
             div.style.width = pen.style.width+"px"
             div.style.top =  (this.y - (this.style.height/2))+"px"
             div.style.left = (this.x - (this.style.width/2))+"px"
-            div.style.borderRadius = this.style.borderRadius
+            div.style.borderRadius = this.style.Radius
+            div.style.border = `${this.style.borderSize}px solid ${this.style.borderColor}`
             div.style.transform = "rotate("+ (this.rotation) +"deg)"
             
     
