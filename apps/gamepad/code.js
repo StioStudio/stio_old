@@ -63,16 +63,16 @@ function makeRigthStick(){
     pen.style.height = 10
     pen.style.width = 150
     pen.style.color = rgb(0,0,0)
-    pen.y += 0
-    pen.x -= 0
+    pen.x = gamepad.axes[2] * 100 + 925
+    pen.y = gamepad.axes[3] * 100 + 400
     pen.rectangle()
     
     pen.style.reset()
     pen.style.width = 10
     pen.style.height = 150
     pen.style.color = rgb(0,0,0)
-    pen.y -= 0
-    pen.x += 0
+    pen.x = gamepad.axes[2] * 100 + 900
+    pen.y = gamepad.axes[3] * 100 + 375
     pen.rectangle()
 }
 
@@ -98,16 +98,16 @@ function makeLeftStick(){
     pen.style.height = 10
     pen.style.width = 150
     pen.style.color = rgb(0,0,0)
-    pen.y += 0
-    pen.x -= 0
+    pen.x = gamepad.axes[0] * 100 + 475
+    pen.y = gamepad.axes[1] * 100 + 400
     pen.rectangle()
     
     pen.style.reset()
     pen.style.width = 10
     pen.style.height = 150
     pen.style.color = rgb(0,0,0)
-    pen.y -= 0
-    pen.x += 0
+    pen.x = gamepad.axes[0] * 100 + 500
+    pen.y = gamepad.axes[1] * 100 + 375
     pen.rectangle()
 }
 
@@ -136,10 +136,21 @@ updateControllers()
 pen.clear()
 
 pen.style.reset()
-pen.style.color = rgb(250, 250, 0)
+pen.style.color = rgb(0, 255, 255)
 pen.x = 900
 pen.y = 400
-pen.style.borderRadius = "50%"
+pen.style.borderRadius = "40%"
+pen.style.height = 300
+pen.style.width = 300
+pen.rectangle()
+
+pen.style.reset()
+pen.style.color = rgb(255, 255, 0)
+pen.x = 500
+pen.y = 400
+pen.style.borderRadius = "40%"
+pen.style.height = 300
+pen.style.width = 300
 pen.rectangle()
 
 makeRigthStick()

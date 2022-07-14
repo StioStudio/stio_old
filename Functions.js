@@ -194,8 +194,8 @@ let pen = {
             div.style.backgroundColor = pen.style.color
             div.style.height = pen.style.height+"px"
             div.style.width = pen.style.width+"px"
-            div.style.top =  (this.y - this.style.height)+"px"
-            div.style.left = (this.x - this.style.width)+"px"
+            div.style.top =  (this.y - (this.style.height/2))+"px"
+            div.style.left = (this.x - (this.style.width/2))+"px"
             div.style.borderRadius = this.style.borderRadius
             div.style.transform = "rotate("+ (this.rotation) +"deg)"
             
