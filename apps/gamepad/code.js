@@ -127,20 +127,20 @@ addEventListener("gamepadconnected", () => {
         pen.clear()
 
         pen.style.reset()
-        pen.style.color = rgb(100, 255, 255)
+        pen.style.color = rgb(200, 255, 255)
         pen.x = 890
         pen.y = 390
-        pen.style.Radius = "40%"
+        pen.style.Radius = "41%"
         pen.style.height = 300
         pen.style.width = 300
         pen.style.borderSize = 10
         pen.rectangle()
 
         pen.style.reset()
-        pen.style.color = rgb(255, 255, 100)
+        pen.style.color = rgb(255, 255, 200)
         pen.x = 490
         pen.y = 390
-        pen.style.Radius = "40%"
+        pen.style.Radius = "41%"
         pen.style.height = 300
         pen.style.width = 300
         pen.style.borderSize = 10
