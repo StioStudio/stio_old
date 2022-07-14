@@ -204,8 +204,8 @@ let pen = {
     },
     
     clear(){
-
         document.getElementById("pen").innerHTML = ""
+        naf.dotNum = 0
     }
 }
 
