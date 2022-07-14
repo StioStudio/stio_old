@@ -12,6 +12,12 @@ let doc = document
     html: "help",
 }
 
+function sec(_num) {
+
+    return(_num * 1000)
+
+}
+
 /** @default
  * You do NOT need this
  * naf = not a function
