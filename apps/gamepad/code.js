@@ -1,33 +1,29 @@
-setup(()=>{})
-
+naf.makeDivId('pen')
 say("Made with " + "%c\u2764", "color:#fc4444; font-family: ; font-size: 25px;", "by nikeedev and stio_studio!");
+
+//              Created  by
+//                     
+//  Nikee                                        Stio
+//                    |-\       |-|                         /--------------\                      
+//                    | |\      | |                        /  ______________\    
+//                    | | \     | |                        \       \
+//                    | |  \    | |            and          \       \
+//                    | |   \   | |                          --/       \
+//                    | |    \  | |                              \      /
+//                    |_|     \_|_|                                \     \
+//                                                                  \      \    
+//                                                          /--------        \             
+//                                                          \________________/           // Simon, hjelp med å lage en "S", det er vanskelig.....
+//
+//
+
+
 
 function updateControllers() {
     gamepads = navigator.getGamepads();
     gamepad = navigator.getGamepads()[gamepadPos];
 }
 
-
-// Setup funksjonen bryter et par ting for oss:
-// 1. Vi kan ikke få tilgang til variablene som inneholder kontroller data, og då kan vi ikke heller kjøre vibration.
-// 
-// Grunn: Funksjoner som endrer på variabler eller lager nye, er bare tilgjenlige inni funksjonen, det betyr at eksisterende variabler får ikke oppdatering (at vi f.eks setter gamepad variablen til kontrolleren din inni setup, skjer det ikke utenfor), 
-//
-// -og det stopper muligheten til å gjøre ting vi vil, som vibration, og jeg har ikke funnet en god grunn hvifor det skjer, men det fungerer greit utenfor funksjonen. 
-//
-//  Om du bestemmer deg om å ta vekk setup funksjonen og gjør sånt at koden fungerer overalt, så takker jeg deg.
-//
-//                      
-//                      
-//  Nikita : 2022         
-//                    |-\       |-|             
-//                    | |\      | |
-//                    | | \     | |     
-//                    | |  \    | |   
-//                    | |   \   | |
-//                    | |    \  | |
-//                    |_|     \_|_|
-//
 
 
 /*
@@ -128,36 +124,49 @@ window.addEventListener("gamepadconnected",
 
 
 addEventListener("gamepadconnected", () => {
-repeat.forever(()=>{
+    repeat.forever(()=>{
 
 
-updateControllers()
+        updateControllers()
 
-pen.clear()
+        pen.clear()
 
-pen.style.reset()
-pen.style.color = rgb(0, 255, 255)
-pen.x = 900
-pen.y = 400
-pen.style.borderRadius = "40%"
-pen.style.height = 300
-pen.style.width = 300
-pen.rectangle()
+        pen.style.reset()
+        pen.style.color = rgb(0, 255, 255)
+        pen.x = 900
+        pen.y = 400
+        pen.style.borderRadius = "40%"
+        pen.style.height = 300
+        pen.style.width = 300
+        pen.rectangle()
 
-pen.style.reset()
-pen.style.color = rgb(255, 255, 0)
-pen.x = 500
-pen.y = 400
-pen.style.borderRadius = "40%"
-pen.style.height = 300
-pen.style.width = 300
-pen.rectangle()
+        pen.style.reset()
+        pen.style.color = rgb(255, 255, 0)
+        pen.x = 500
+        pen.y = 400
+        pen.style.borderRadius = "40%"
+        pen.style.height = 300
+        pen.style.width = 300
+        pen.rectangle()
 
-makeRigthStick()
-makeLeftStick()
+        makeRigthStick()
+        makeLeftStick()
 
 
-})
+
+        playVbrtion.onclick = function() {
+
+            gamepad.vibrationActuator.playEffect("dual-rumble", {
+                startDelay: 0,
+                duration: durationTime.value*1000,
+                weakMagnitude: weakMagnitudeInput.value,
+                strongMagnitude: strongMagnitudeInput.value
+            });
+        };
+
+
+
+    })
 });
 
 /*
@@ -167,41 +176,30 @@ setInterval(()=>{
     
 }, 1000)
 */
-    
+
 var btns = document.createElement("div");
-    var playVbrtion = document.createElement("button");
+var playVbrtion = document.createElement("button");
 
-    btns.id = "btns";
+btns.id = "btns";
 
-    playVbrtion.onclick = function() {
-
-        gamepad.vibrationActuator.playEffect("dual-rumble", {
-            startDelay: 0,
-            duration: parseFloat(durationTime.value),
-            weakMagnitude: parseFloat(weakMagnitudeInput.value),
-            strongMagnitude: parseFloat(strongMagnitudeInput.value)
-        });
-
-    };
-    playVbrtion.innerText = "Play Vibration"
+playVbrtion.innerText = "Play Vibration"
 
 
-    btns.appendChild(playVbrtion);
+btns.appendChild(playVbrtion);
 
 
-    var weakMagnitudeInput = document.createElement("input");
-    weakMagnitudeInput.placeholder = "Weak Magnitude ( 0.0 <-> 1.0 )"
+var weakMagnitudeInput = document.createElement("input");
+weakMagnitudeInput.placeholder = "Weak Magnitude ( 0.0 <-> 1.0 )"
 
-    var strongMagnitudeInput = document.createElement("input");
-    strongMagnitudeInput.placeholder = "Strong Magnitude ( 0.0 <-> 1.0 )"
+var strongMagnitudeInput = document.createElement("input");
+strongMagnitudeInput.placeholder = "Strong Magnitude ( 0.0 <-> 1.0 )"
 
-    var durationTime = document.createElement("input");
-    durationTime.placeholder = "Duration ( secs )"
+var durationTime = document.createElement("input");
+durationTime.placeholder = "Duration ( secs )"
 
 
-    btns.appendChild(weakMagnitudeInput);
-    btns.appendChild(strongMagnitudeInput);
-    btns.appendChild(durationTime);
+btns.appendChild(weakMagnitudeInput);
+btns.appendChild(strongMagnitudeInput);
+btns.appendChild(durationTime);
 
-    document.body.appendChild(btns);
-
+document.body.appendChild(btns);
