@@ -1,4 +1,4 @@
-
+setup(()=>{})
 
 say("Made with " + "%c\u2764", "color:#fc4444; font-family: ; font-size: 25px;", "by nikeedev and stio_studio!");
 
@@ -30,70 +30,58 @@ function updateControllers() {
 //
 
 
-setup(()=>{
-
     
-    var gamepads = {};
-
-    var gamepad;
-    var gamepadPos;
-
-    window.addEventListener("gamepadconnected",
-        function (e) {
-            gamepads = navigator.getGamepads();
-            gamepadPos = e.gamepad.index;
-            gamepad = navigator.getGamepads()[e.gamepad.index];
-        },
-        false
-    );
-
-
-    addEventListener("gamepadconnected", ()=>{
-        
-        pen.style.height = 100
-        pen.style.width = 100
-
-        pen.style.borderRadius = "50%"
-        
-
-        const updateFunc = () => {
-                   
-            updateControllers()
-        
-            pen.clear()
-            
-            // If you click on L3, the joy stick color gets darkened
-            if (gamepad.buttons[10].pressed) {
-                pen.style.color = color.rgb(120, 120, 0)
-            }
-            else {
-                pen.style.color = color.rgb(200, 200, 0)
-            }
-            // pen.style.color = color.rgb(200, 200, 0)
-            pen.x = gamepad.axes[0] * 100 + (window.innerHeight/2+100);
-            pen.y = gamepad.axes[1] * 100 + (window.innerHeight/2);
-            pen.rectangle()
-            
-            // If you click on R3, the joystick color gets darkened
-            if (gamepad.buttons[11].pressed) {
-                pen.style.color = color.rgb(0, 120, 120)
-            }
-            else {
-                pen.style.color = color.rgb(0, 200, 200)
-            }
-
-            // pen.style.color = color.rgb(0, 200, 200)
-            pen.x = gamepad.axes[2] * 100 + (window.innerHeight/2+400);
-            pen.y = gamepad.axes[3] * 100 + (window.innerHeight/2);    
-            pen.rectangle()
-
-            requestAnimationFrame(updateFunc);
+var gamepads = {};
+var gamepad;
+var gamepadPos;
+window.addEventListener("gamepadconnected",
+    function (e) {
+        gamepads = navigator.getGamepads();
+        gamepadPos = e.gamepad.index;
+        gamepad = navigator.getGamepads()[e.gamepad.index];
+    },
+    false
+);
+addEventListener("gamepadconnected", ()=>{
     
+    pen.style.height = 100
+    pen.style.width = 100
+    pen.style.borderRadius = "50%"
+    
+    const updateFunc = () => {
+               
+        updateControllers()
+    
+        pen.clear()
+        
+        // If you click on L3, the joy stick color gets darkened
+        if (gamepad.buttons[10].pressed) {
+            pen.style.color = color.rgb(120, 120, 0)
         }
-        requestAnimationFrame(updateFunc);
+        else {
+            pen.style.color = color.rgb(200, 200, 0)
+        }
+        // pen.style.color = color.rgb(200, 200, 0)
+        pen.x = gamepad.axes[0] * 100 + (window.innerHeight/2+100);
+        pen.y = gamepad.axes[1] * 100 + (window.innerHeight/2);
+        pen.rectangle()
         
+        // If you click on R3, the joystick color gets darkened
+        if (gamepad.buttons[11].pressed) {
+            pen.style.color = color.rgb(0, 120, 120)
+        }
+        else {
+            pen.style.color = color.rgb(0, 200, 200)
+        }
+        // pen.style.color = color.rgb(0, 200, 200)
+        pen.x = gamepad.axes[2] * 100 + (window.innerHeight/2+400);
+        pen.y = gamepad.axes[3] * 100 + (window.innerHeight/2);    
+        pen.rectangle()
+        requestAnimationFrame(updateFunc);
 
-    })
+    }
+    requestAnimationFrame(updateFunc);
+    
 })
 
 

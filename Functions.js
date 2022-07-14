@@ -61,19 +61,12 @@ let doc = document
 
 }
 
-
-function text(..._num_or_func){
-
-    let out = `${_num_or_func}`
-    return( out )
-
+function makeText(...toText){
+    return(`${toText}`)
 }
 
-function T_F(...text_to_func){
-
-    let out = Function(text_to_func)
-    return( out )
-
+function RunText(...text_to_func){
+    return( Function(text_to_func) )
 }
 
 let enter = "\n"
@@ -459,45 +452,6 @@ let eventer = {
 
                 i++
             })
-
-        }
-
-    }
-}
-
-let v3 = {
-    var:{
-        x: 0,
-        y: 0,
-        z: 0,
-        rx: 0,
-        ry: 0,
-        rz: 0,
-        dotX: 0,
-        dotY: 0,
-        pov: 200,
-        inScreen: false,
-    },
-    func:{
-        calkulate(){
-
-            naf.coseineY = cos(v3.var.ry)
-            naf.sineY = sin(v3.var.ry)
-
-            naf.coseineX = cos(v3.var.rx)
-            naf.sineX = sin(v3.var.rx)
-            
-        },
-
-        placeDot(_x,_y,_z){
-            naf.setPoint(_x-v3.var.x, _y-v3.var.y, _z-v3.var.z)
-            naf.setPoint( ( _z * naf.sineY ) + ( _x * naf.coseineY ), _y, ( _z * naf.coseineY ) - ( _x * naf.sineY ) )
-            naf.setPoint( _x , ( _y * naf.coseineX ) + ( _z * naf.sineX ) , ( _y * naf.sineX ) - ( _z * naf.coseineX ) )
-            
-            v3.var.inScreen = naf.z < 10
-
-            v3.var.dotX = v3.var.pov * (naf.x / naf.z)
-            v3.var.dotY = v3.var.pov + (naf.y / naf.z)
 
         }
 
