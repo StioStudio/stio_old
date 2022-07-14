@@ -1,5 +1,6 @@
 
 /*
+
 function playVibration() {
 
     gamepad.vibrationActuator.playEffect("dual-rumble", {
@@ -10,9 +11,9 @@ function playVibration() {
     });
 }
 
-*/
 
-/*
+
+
 var btns = document.createElement("div");
 var playVbrtion = document.createElement("button");
 
