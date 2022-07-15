@@ -135,12 +135,18 @@ let pen = {
 
             this.position = "absolute",
 
-            this.Radius = "0%"
+            this.radius = "0%"
 
             this.borderSize = 0
             
             this.borderColor = "#000000"
 
+            this.text = ""
+
+            textType = "none"
+
+            textSize = 50
+    
         },
 
         /** @default
@@ -175,7 +181,13 @@ let pen = {
 
         borderSize: 0,
 
-        borderColor: "#000000"
+        borderColor: "#000000",
+
+        text: "",
+
+        textType: "none",
+
+        textSize: 50,
 
     },
 
@@ -196,28 +208,35 @@ let pen = {
         this.y += sin(this.rotation - 90) * move
     },
 
+    hide(){
+        this.style.color = "#00000000"
+        this.style.borderColor = "#00000000"
+    },
+
     /** @default
      * Makes a rectangle on the html/website.
      */
     rectangle(){
-            let div = document.createElement("div");
-            naf.dotNum++
-            div.id = naf.dotNum
+        let div = doc.createElement("div");
+        naf.dotNum++
+        div.id = naf.dotNum
 
-            div.style.position = pen.style.position
-            div.style.backgroundColor = pen.style.color
-            div.style.height = pen.style.height+"px"
-            div.style.width = pen.style.width+"px"
-            div.style.top =  (this.y - (this.style.height/2))+"px"
-            div.style.left = (this.x - (this.style.width/2))+"px"
-            div.style.borderRadius = this.style.Radius
-            div.style.border = `${this.style.borderSize}px solid ${this.style.borderColor}`
-            div.style.transform = "rotate("+ (this.rotation) +"deg)"
-            
-    
-            document.getElementById("pen").appendChild(div);
+        div.innerText = this.style.text
+        div.style.font = this.style.textType
+        div.style.fontSize = `${this.style.textSize}px`
+        div.style.position = pen.style.position
+        div.style.backgroundColor = pen.style.color
+        div.style.height = pen.style.height+"px"
+        div.style.width = pen.style.width+"px"
+        div.style.top =  (this.y - (this.style.height / 2 + this.style.borderSize))+"px"
+        div.style.left = (this.x - (this.style.width / 2 + this.style.borderSize))+"px"
+        div.style.borderRadius = this.style.radius
+        div.style.border = `${this.style.borderSize}px solid ${this.style.borderColor}`
+        div.style.transform = "rotate("+ (this.rotation) +"deg)"
+
+
+        document.getElementById("pen").appendChild(div);
     },
-    
     clear(){
         document.getElementById("pen").innerHTML = ""
         naf.dotNum = 0
