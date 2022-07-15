@@ -118,9 +118,9 @@ window.addEventListener("gamepadconnected",
 
 
 
+
 addEventListener("gamepadconnected", () => {
     repeat.forever(()=>{
-
 
         updateControllers()
 
