@@ -1,8 +1,0 @@
-index.html
-sprites/
-.vscode/
-main.js
-examples/
-moving.gameengine-obj
-/node_modules
-src/GameEngine.ts
