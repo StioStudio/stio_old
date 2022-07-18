@@ -1,6 +1,8 @@
 
 let doc = document
 
+let nav = navigator
+
 /**@default
  * I need help with this
  */

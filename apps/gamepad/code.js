@@ -23,7 +23,19 @@ function updateControllers() {
     gamepad = navigator.getGamepads()[gamepadPos];
 }
 
-
+pen.style.reset()
+pen.style.textSize = 40
+pen.style.width = 400
+pen.style.height = 200
+pen.x = 500
+pen.y = 400
+pen.style.color = rgb(100, 200, 0)
+pen.style.radius = "50%"
+pen.style.text = 
+`
+pls click a button on your controler
+`
+pen.rectangle()
 
 /*
 function playVibration() {
@@ -223,7 +235,8 @@ window.addEventListener("gamepadconnected",
 );
 
 addEventListener("click", ()=>{
-    say(gamepad)
+    say(nav.getGamepads())
+
 })
 
 
