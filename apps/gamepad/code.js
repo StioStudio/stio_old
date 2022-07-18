@@ -1,6 +1,10 @@
 setup(()=>{})
 say("Made with " + "%c\u2764", "color:#fc4444; font-family: ; font-size: 25px;", "by nikeedev and stio_studio!");
 
+let leftStick_X = 600
+let rigthStick_X = 1000
+
+
 //                   Created  by
 //
 //    Nikee                              Stio
@@ -37,7 +41,7 @@ function makeTextGamepad(){
 
     //left under stick
     pen.style.reset()
-    pen.x = gamepad.axes[0]*100+500
+    pen.x = gamepad.axes[0]*100+leftStick_X
     pen.y = 600
     pen.style.height = 10
     pen.style.width = 10
@@ -49,7 +53,7 @@ function makeTextGamepad(){
     pen.hide()
     pen.style.height = 0
     pen.style.width = 0
-    pen.x = 400
+    pen.x = leftStick_X-100
     pen.y = 650
     pen.style.textSize = 20
     pen.style.text = gamepad.axes[0]
@@ -59,10 +63,34 @@ function makeTextGamepad(){
     pen.style.text = "gamepad.axes[0]"
     pen.rectangle()
 
+    //left side stick
+    pen.style.reset()
+    pen.x = leftStick_X-200
+    pen.y = gamepad.axes[1]*100+400
+    pen.style.height = 10
+    pen.style.width = 10
+    pen.style.radius = "50%"
+    pen.style.color = rgb(0,0,0)
+    pen.rectangle()
+
+    pen.style.reset()
+    pen.hide()
+    pen.style.height = 0
+    pen.style.width = 0
+    pen.x = leftStick_X-430
+    pen.y = 400
+    pen.style.textSize = 20
+    pen.style.text = gamepad.axes[1]
+    pen.rectangle()
+
+    pen.y = 430
+    pen.style.text = "gamepad.axes[1]"
+    pen.rectangle()
+
 
     //rigth under stick
     pen.style.reset()
-    pen.x = gamepad.axes[2]*100+900
+    pen.x = gamepad.axes[2]*100+rigthStick_X
     pen.y = 600
     pen.style.height = 10
     pen.style.width = 10
@@ -74,7 +102,7 @@ function makeTextGamepad(){
     pen.hide()
     pen.style.height = 0
     pen.style.width = 0
-    pen.x = 800
+    pen.x = rigthStick_X-100
     pen.y = 650
     pen.style.textSize = 20
     pen.style.text = gamepad.axes[2]
@@ -84,6 +112,31 @@ function makeTextGamepad(){
     pen.style.text = "gamepad.axes[2]"
     pen.rectangle()
 
+
+    //rigth side stick
+    pen.style.reset()
+    pen.x = rigthStick_X+200
+    pen.y = gamepad.axes[3]*100+400
+    pen.style.height = 10
+    pen.style.width = 10
+    pen.style.radius = "50%"
+    pen.style.color = rgb(0,0,0)
+    pen.rectangle()
+
+    pen.style.reset()
+    pen.hide()
+    pen.style.height = 0
+    pen.style.width = 0
+    pen.x = rigthStick_X+230
+    pen.y = 400
+    pen.style.textSize = 20
+    pen.style.text = gamepad.axes[3]
+    pen.rectangle()
+
+    
+    pen.y = 430
+    pen.style.text = "gamepad.axes[3]"
+    pen.rectangle()
 }
 
 function makeRigthStick(){
@@ -99,7 +152,7 @@ function makeRigthStick(){
         pen.style.color = rgb(0, 200, 200)
     }
     // pen.style.color = color.rgb(0, 200, 200)
-    pen.x = gamepad.axes[2] * 100 + 900;
+    pen.x = gamepad.axes[2] * 100 + rigthStick_X;
     pen.y = gamepad.axes[3] * 100 + 400;
    
     pen.rectangle()
@@ -109,6 +162,14 @@ function makeRigthStick(){
     pen.style.width = 60
     pen.style.borderSize = 6
     pen.style.borderColor = rgb(0, 0, 0)
+    pen.rectangle()
+
+    pen.style.reset()
+    pen.hide()
+    pen.style.height = 30
+    pen.style.width = 30
+    pen.style.textSize = 30
+    pen.style.text = "R3"
     pen.rectangle()
 }
 
@@ -126,7 +187,7 @@ function makeLeftStick(){
         pen.style.color = rgb(200, 200, 0)
     }
     // pen.style.color = color.rgb(200, 200, 0)
-    pen.x = gamepad.axes[0] * 100 + 500;
+    pen.x = gamepad.axes[0] * 100 + leftStick_X;
     pen.y = gamepad.axes[1] * 100 + 400;
     pen.rectangle()
 
@@ -135,6 +196,14 @@ function makeLeftStick(){
     pen.style.width = 60
     pen.style.borderSize = 6
     pen.style.borderColor = rgb(0, 0, 0)
+    pen.rectangle()
+
+    pen.style.reset()
+    pen.hide()
+    pen.style.height = 30
+    pen.style.width = 30
+    pen.style.textSize = 30
+    pen.style.text = "L3"
     pen.rectangle()
     
 }
@@ -153,7 +222,9 @@ window.addEventListener("gamepadconnected",
     false
 );
 
-
+addEventListener("click", ()=>{
+    say(gamepad)
+})
 
 
 addEventListener("gamepadconnected", () => {
@@ -163,9 +234,11 @@ addEventListener("gamepadconnected", () => {
 
         pen.clear()
 
+
+        //rigth stick        
         pen.style.reset()
         pen.style.color = rgb(200, 255, 255)
-        pen.x = 900
+        pen.x = rigthStick_X
         pen.y = 400
         pen.style.radius = "41%"
         pen.style.height = 300
@@ -173,9 +246,10 @@ addEventListener("gamepadconnected", () => {
         pen.style.borderSize = 10
         pen.rectangle()
 
+        //left stick
         pen.style.reset()
         pen.style.color = rgb(255, 255, 200)
-        pen.x = 500
+        pen.x = leftStick_X
         pen.y = 400
         pen.style.radius = "41%"
         pen.style.height = 300

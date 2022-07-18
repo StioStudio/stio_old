@@ -425,6 +425,9 @@ function rgb(red, green, blue){
     return("#" + naf.TenToHex(red) + naf.TenToHex(green) + naf.TenToHex(blue))
 }
 
+function rgba(red, green, blue, transparency){
+    return("#" + naf.TenToHex(red) + naf.TenToHex(green) + naf.TenToHex(blue) + (naf.TenToHex(255-transparency)))
+}
 
 let eventer = {
     listen(_name_, _text){
