@@ -18,10 +18,6 @@ let rigthStick_X = 1000
 //
 
 
-function updateControllers() {
-    gamepads = navigator.getGamepads();
-    gamepad = navigator.getGamepads()[gamepadPos];
-}
 
 pen.style.reset()
 pen.style.textSize = 40
@@ -50,7 +46,7 @@ function playVibration() {
 */
 
 function makeTextGamepad(){
-
+    
     //left under stick
     pen.style.reset()
     pen.x = gamepad.axes[0]*100+leftStick_X
@@ -60,7 +56,7 @@ function makeTextGamepad(){
     pen.style.radius = "50%"
     pen.style.color = rgb(0,0,0)
     pen.rectangle()
-
+    
     pen.style.reset()
     pen.hide()
     pen.style.height = 0
@@ -70,11 +66,11 @@ function makeTextGamepad(){
     pen.style.textSize = 20
     pen.style.text = gamepad.axes[0]
     pen.rectangle()
-
+    
     pen.y = 680
     pen.style.text = "gamepad.axes[0]"
     pen.rectangle()
-
+    
     //left side stick
     pen.style.reset()
     pen.x = leftStick_X-200
@@ -84,7 +80,7 @@ function makeTextGamepad(){
     pen.style.radius = "50%"
     pen.style.color = rgb(0,0,0)
     pen.rectangle()
-
+    
     pen.style.reset()
     pen.hide()
     pen.style.height = 0
@@ -94,12 +90,12 @@ function makeTextGamepad(){
     pen.style.textSize = 20
     pen.style.text = gamepad.axes[1]
     pen.rectangle()
-
+    
     pen.y = 430
     pen.style.text = "gamepad.axes[1]"
     pen.rectangle()
-
-
+    
+    
     //rigth under stick
     pen.style.reset()
     pen.x = gamepad.axes[2]*100+rigthStick_X
@@ -119,12 +115,12 @@ function makeTextGamepad(){
     pen.style.textSize = 20
     pen.style.text = gamepad.axes[2]
     pen.rectangle()
-
+    
     pen.y = 680
     pen.style.text = "gamepad.axes[2]"
     pen.rectangle()
-
-
+    
+    
     //rigth side stick
     pen.style.reset()
     pen.x = rigthStick_X+200
@@ -166,16 +162,16 @@ function makeRigthStick(){
     // pen.style.color = color.rgb(0, 200, 200)
     pen.x = gamepad.axes[2] * 100 + rigthStick_X;
     pen.y = gamepad.axes[3] * 100 + 400;
-   
+    
     pen.rectangle()
-
+    
     pen.hide()
     pen.style.height = 60
     pen.style.width = 60
     pen.style.borderSize = 6
     pen.style.borderColor = rgb(0, 0, 0)
     pen.rectangle()
-
+    
     pen.style.reset()
     pen.hide()
     pen.style.height = 30
@@ -202,14 +198,14 @@ function makeLeftStick(){
     pen.x = gamepad.axes[0] * 100 + leftStick_X;
     pen.y = gamepad.axes[1] * 100 + 400;
     pen.rectangle()
-
+    
     pen.hide()
     pen.style.height = 60
     pen.style.width = 60
     pen.style.borderSize = 6
     pen.style.borderColor = rgb(0, 0, 0)
     pen.rectangle()
-
+    
     pen.style.reset()
     pen.hide()
     pen.style.height = 30
@@ -220,25 +216,26 @@ function makeLeftStick(){
     
 }
 
-    
+
 var gamepads = {};
 var gamepad;
 var gamepadPos;
+
+function updateControllers() {
+    gamepads = navigator.getGamepads();
+    gamepad = navigator.getGamepads()[gamepadPos];
+}
 
 window.addEventListener("gamepadconnected",
     function (e) {
         gamepads = navigator.getGamepads();
         gamepadPos = e.gamepad.index;
         gamepad = navigator.getGamepads()[e.gamepad.index];
-    },
-    false
-);
+},false);
 
 addEventListener("click", ()=>{
     say(nav.getGamepads())
-
 })
-
 
 addEventListener("gamepadconnected", () => {
     repeat.forever(()=>{

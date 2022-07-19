@@ -3,6 +3,8 @@ let doc = document
 
 let nav = navigator
 
+let win = window
+
 /**@default
  * I need help with this
  */
@@ -544,3 +546,86 @@ let html = {
 
     }
 }
+let keys = undefined
+
+addEventListener("keydown", (e)=>{
+    keys = e
+})
+
+win.getGamepads = nav.getGamepads()
+let con ={
+    cross: 0,
+    circle: 0,
+    square: 0,
+    triangle: 0,
+
+    l1: 0,
+    l2: 0,
+    l2: 0,
+
+    r1: 0,
+    r2: 0,
+    r3: 0,
+    
+    arrow_Up: 0,
+    arrow_Down: 0,
+    arrow_Left: 0,
+    arrow_Rigth: 0,
+    
+    share: 0,
+    options: 0,
+    ps: 0,
+    touchPad: 0,
+}
+win.con1 = con
+win.con2 = con
+win.con3 = con
+win.con4 = con
+win.cons = {con1,con2,con3,con4}
+
+addEventListener("gamepadconnected", ()=>{ repeat.forever(()=>{
+
+    win.getGamepads = nav.getGamepads()
+
+    function con(conNum) {
+        return{
+
+            cross: getGamepads[conNum].buttons[0].value,
+            circle: getGamepads[conNum].buttons[1].value,
+            square: getGamepads[conNum].buttons[2].value,
+            triangle: getGamepads[conNum].buttons[3].value,
+
+            l1: getGamepads[conNum].buttons[4].value,
+            l2: getGamepads[conNum].buttons[6].value,
+            l2: getGamepads[conNum].buttons[10].value,
+
+            r1: getGamepads[conNum].buttons[5].value,
+            r2: getGamepads[conNum].buttons[7].value,
+            r3: getGamepads[conNum].buttons[11].value,
+            
+            arrow_Up: getGamepads[conNum].buttons[12].value,
+            arrow_Down: getGamepads[conNum].buttons[13].value,
+            arrow_Left: getGamepads[conNum].buttons[14].value,
+            arrow_Rigth: getGamepads[conNum].buttons[15].value,
+            
+            share: getGamepads[conNum].buttons[8].value,
+            options: getGamepads[conNum].buttons[9].value,
+            ps: getGamepads[conNum].buttons[16].value,
+            touchPad: getGamepads[conNum].buttons[17].value,
+        }
+    }
+
+    if (!(undefined == win.getGamepads[0])){
+        win.con1 = con(0) 
+    }
+    if (!(undefined == win.getGamepads[1])){
+        win.con2 = con(1) 
+    }
+    if (!(undefined == win.getGamepads[2])){
+        win.con3 = con(2) 
+    }
+    if (!(undefined == win.getGamepads[3])){
+        win.con4 = con(3) 
+    }
+    win.cons = {con1,con2,con3,con4}
+})})
