@@ -69,7 +69,21 @@ function sec(_num) {
 
     }
 
+
+
 }
+
+function smallestHW(){
+    if(win.innerHeight <= win.innerWidth){
+        return(win.innerHeight)
+    }
+    return(win.innerWidth)
+}
+
+function percent(a,b){
+    return(a/b*100)
+}
+
 
 function makeText(...toText){
     return(`${toText}`)
@@ -223,21 +237,22 @@ let pen = {
      * Makes a rectangle on the html/website.
      */
     rectangle(){
+        let SP = smallestHW()/1000
         let div = doc.createElement("div");
         naf.dotNum++
         div.id = naf.dotNum
 
         div.innerText = this.style.text
         div.style.font = this.style.textType
-        div.style.fontSize = `${this.style.textSize}px`
+        div.style.fontSize = `${this.style.textSize*SP}px`
         div.style.position = pen.style.position
         div.style.backgroundColor = pen.style.color
-        div.style.height = pen.style.height+"px"
-        div.style.width = pen.style.width+"px"
-        div.style.top =  (this.y - (this.style.height / 2 + this.style.borderSize))+"px"
-        div.style.left = (this.x - (this.style.width / 2 + this.style.borderSize))+"px"
+        div.style.height = pen.style.height*SP+"px"
+        div.style.width = pen.style.width*SP+"px"
+        div.style.top =  (this.y*SP - (this.style.height*SP / 2 + this.style.borderSize*SP))+"px"
+        div.style.left = (this.x*SP - (this.style.width*SP / 2 + this.style.borderSize*SP))+"px"
         div.style.borderRadius = this.style.radius
-        div.style.border = `${this.style.borderSize}px solid ${this.style.borderColor}`
+        div.style.border = `${this.style.borderSize*SP}px solid ${this.style.borderColor}`
         div.style.transform = "rotate("+ (this.rotation) +"deg)"
 
 
