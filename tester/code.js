@@ -5,11 +5,14 @@
 //console.log(hello)
 setup(()=>{})
 
-let a = 0
-let b = 0
+let x1 = 0
+let y1 = 0
+let x2 = 0
+let y2 = 0
+
 
 pen.style.radius = "30%"
-pen.style.borderColor = rgb(0,0,255)
+pen.style.borderColor = rgb(255,255,255)
 pen.style.borderSize = 5
 repeat.forever(()=>{
     pen.clear()
@@ -19,11 +22,19 @@ repeat.forever(()=>{
     pen.rectangle()
 
     if(con1.active){
+        pen.style.color = rgb(0,0,255)
+        x1 += con1.lX * 5
+        y1 += con1.lY * 5
+        pen.x = x1
+        pen.y = y1
+        pen.rectangle()
+    }
+    if(con2.active){
         pen.style.color = rgb(0,255,0)
-        a += con1.lX * 5
-        b += con1.lY * 5
-        pen.x = a
-        pen.y = b
+        x2 += con2.lX * 5
+        y2 += con2.lY * 5
+        pen.x = x2
+        pen.y = y2
         pen.rectangle()
     }
 
