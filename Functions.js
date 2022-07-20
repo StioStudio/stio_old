@@ -638,6 +638,7 @@ let con ={
     ps: 0,
     touchPad: 0,
 }
+let conPrimary = 0
 win.con1 = con
 win.con2 = con
 win.con3 = con
@@ -648,7 +649,7 @@ addEventListener("gamepadconnected", ()=>{ repeat.forever(()=>{
 
     win.getGamepads = nav.getGamepads()
 
-    function con(conNum) {
+    function conF(conNum) {
         return{
 
             name: getGamepads[conNum].id,
@@ -686,17 +687,18 @@ addEventListener("gamepadconnected", ()=>{ repeat.forever(()=>{
     }
 
     if (!(undefined == win.getGamepads[0])){
-        win.con1 = con(0) 
+        win.con1 = conF(0) 
     }
     if (!(undefined == win.getGamepads[1])){
-        win.con2 = con(1) 
+        win.con2 = conF(1) 
     }
     if (!(undefined == win.getGamepads[2])){
-        win.con3 = con(2) 
+        win.con3 = conF(2) 
     }
     if (!(undefined == win.getGamepads[3])){
-        win.con4 = con(3) 
+        win.con4 = conF(3) 
     }
     win.cons = {con1,con2,con3,con4}
+    con = conF(conPrimary)
 })})
 

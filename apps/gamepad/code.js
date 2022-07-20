@@ -224,7 +224,7 @@ var gamepadPos;
 
 function updateControllers() {
     gamepads = navigator.getGamepads();
-    gamepad = navigator.getGamepads()[gamepadPos];
+    gamepad = navigator.getGamepads()[0];
 }
 
 window.addEventListener("gamepadconnected",
