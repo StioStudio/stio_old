@@ -87,6 +87,8 @@ let enter = "\n"
  */
 function setup(_text) {
 
+    doc.getElementById("all").style.touchAction = "none"
+
     naf.makeDivId("pen")
     
     requestAnimationFrame(_text)
@@ -239,7 +241,7 @@ let pen = {
         div.style.transform = "rotate("+ (this.rotation) +"deg)"
 
 
-        document.getElementById("pen").appendChild(div);
+        document.getElementById("pen").appendChild(div)
     },
     clear(){
         document.getElementById("pen").innerHTML = ""
@@ -530,30 +532,68 @@ function positionDot(e, dot) {
     dot.style.top = `${e.pageY}px`
     dot.style.backgroundColor = "#ff0000"
 }
-*/
 
 let html = {
-
+    
     style:{
-
+        
         backgroundColor: "#ff0000",
-
+        
     },
     
     make(element){
-
         
-
+        
+        
     }
 }
-let keys = undefined
+*/
+
+let mouseClick = false
+addEventListener("pointerdown", ()=>{
+    mouseClick = true
+})
+addEventListener("pointerup", ()=>{
+    mouseClick = false
+})
+
+let mouse_X = 0
+let mouse_Y = 0
+
+addEventListener("pointermove",(e)=>{
+    mouse_X = e.pageX
+    mouse_Y = e.pageY
+})
+
+Array.prototype.remove = function(_num){
+    const array = this.valueOf()
+    const index = array.indexOf(_num);
+    if (index > -1) {
+        array.splice(index, 1);
+    }
+    return(array)
+}
+
+function checkKeys(_key){
+    return(keys.includes(_key))
+}
+
+let keys = []
 
 addEventListener("keydown", (e)=>{
-    keys = e
+    if(keys.includes(e.key)) return
+    keys.push(e.key)
+})
+
+addEventListener("keyup",(e)=>{
+    keys.remove(e.key)
 })
 
 win.getGamepads = nav.getGamepads()
 let con ={
+    name: "none",
+    active: false,
+
     cross: 0,
     circle: 0,
     square: 0,
@@ -566,7 +606,13 @@ let con ={
     r1: 0,
     r2: 0,
     r3: 0,
-    
+
+    rX: 0,
+    rY: 0,
+
+    lX: 0,
+    lY: 0,
+
     arrow_Up: 0,
     arrow_Down: 0,
     arrow_Left: 0,
@@ -590,6 +636,9 @@ addEventListener("gamepadconnected", ()=>{ repeat.forever(()=>{
     function con(conNum) {
         return{
 
+            name: getGamepads[conNum].id,
+            active: getGamepads[conNum].connected,
+
             cross: getGamepads[conNum].buttons[0].value,
             circle: getGamepads[conNum].buttons[1].value,
             square: getGamepads[conNum].buttons[2].value,
@@ -597,12 +646,18 @@ addEventListener("gamepadconnected", ()=>{ repeat.forever(()=>{
 
             l1: getGamepads[conNum].buttons[4].value,
             l2: getGamepads[conNum].buttons[6].value,
-            l2: getGamepads[conNum].buttons[10].value,
+            l3: getGamepads[conNum].buttons[10].value,
 
             r1: getGamepads[conNum].buttons[5].value,
             r2: getGamepads[conNum].buttons[7].value,
             r3: getGamepads[conNum].buttons[11].value,
             
+            rX: getGamepads[conNum].axes[2],
+            rY: getGamepads[conNum].axes[3],
+
+            lX: getGamepads[conNum].axes[0],
+            lY: getGamepads[conNum].axes[1],
+
             arrow_Up: getGamepads[conNum].buttons[12].value,
             arrow_Down: getGamepads[conNum].buttons[13].value,
             arrow_Left: getGamepads[conNum].buttons[14].value,
@@ -629,3 +684,4 @@ addEventListener("gamepadconnected", ()=>{ repeat.forever(()=>{
     }
     win.cons = {con1,con2,con3,con4}
 })})
+
