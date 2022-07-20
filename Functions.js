@@ -604,30 +604,32 @@ addEventListener("keyup",(e)=>{
     keys.remove(e.key)
 })
 
+
 win.getGamepads = nav.getGamepads()
 let con ={
     name: "none",
     active: false,
-
+    player: undefined,
+    
     cross: 0,
     circle: 0,
     square: 0,
     triangle: 0,
-
+    
     l1: 0,
     l2: 0,
     l2: 0,
-
+    
     r1: 0,
     r2: 0,
     r3: 0,
-
+    
     rX: 0,
     rY: 0,
 
     lX: 0,
     lY: 0,
-
+    
     arrow_Up: 0,
     arrow_Down: 0,
     arrow_Left: 0,
@@ -646,14 +648,15 @@ win.con4 = con
 win.cons = {con1,con2,con3,con4}
 
 addEventListener("gamepadconnected", ()=>{ repeat.forever(()=>{
-
+    
     win.getGamepads = nav.getGamepads()
 
     function conF(conNum) {
         return{
-
+            
             name: getGamepads[conNum].id,
             active: getGamepads[conNum].connected,
+            player: conNum,
 
             cross: getGamepads[conNum].buttons[0].value,
             circle: getGamepads[conNum].buttons[1].value,
