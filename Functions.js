@@ -680,7 +680,7 @@ addEventListener("gamepadconnected", ()=>{ repeat.forever(()=>{
             arrow_Up: getGamepads[conNum].buttons[12].value,
             arrow_Down: getGamepads[conNum].buttons[13].value,
             arrow_Left: getGamepads[conNum].buttons[14].value,
-            arrow_Rigth: getGamepads[conNum].buttons[15].value,
+            arrow_Right: getGamepads[conNum].buttons[15].value,
             
             share: getGamepads[conNum].buttons[8].value,
             options: getGamepads[conNum].buttons[9].value,
