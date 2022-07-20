@@ -633,7 +633,7 @@ let con ={
     arrow_Up: 0,
     arrow_Down: 0,
     arrow_Left: 0,
-    arrow_Rigth: 0,
+    arrow_Right: 0,
     
     share: 0,
     options: 0,
