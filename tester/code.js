@@ -3,6 +3,8 @@
 //var ${a} = 7;
 //`)
 //console.log(hello)
+
+/*
 setup(()=>{})
 
 let x1 = 0
@@ -39,5 +41,15 @@ repeat.forever(()=>{
     }
 
 })
+*/
 
+function smallestHW(){
+    if(win.innerHeight <= win.innerWidth){
+        return(win.innerHeight)
+    }
+    return(win.innerWidth)
+}
+let smallePage = smallestHW()
+
+say(percent(10, 1000))
 
