@@ -272,7 +272,8 @@ addEventListener("gamepadconnected", () => {
 
         playVbrtion.onclick = function() {
 
-            say("HELLO")
+            say(gamepad);
+        
 
             gamepad.vibrationActuator.playEffect("dual-rumble", {
                 startDelay: 0,
