@@ -232,10 +232,6 @@ function (e) {
     gamepad = navigator.getGamepads()[e.gamepad.index];
 },false);
 
-addEventListener("click", ()=>{
-    say(nav.getGamepads())
-})
-
 addEventListener("gamepadconnected", () => {
     repeat.forever(()=>{
 
