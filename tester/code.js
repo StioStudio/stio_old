@@ -18,12 +18,14 @@ repeat.forever(()=>{
     pen.y = mouse_Y
     pen.rectangle()
 
-    pen.style.color = rgb(0,255,0)
-    a += con1.lX * 5
-    b += con1.lY * 5
-    pen.x = a
-    pen.y = b
-    pen.rectangle()
+    if(con1.active){
+        pen.style.color = rgb(0,255,0)
+        a += con1.lX * 5
+        b += con1.lY * 5
+        pen.x = a
+        pen.y = b
+        pen.rectangle()
+    }
 
 })
 
