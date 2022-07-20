@@ -1,9 +1,5 @@
 
 
-setup(()=>{ 
-
-say(html)
-
-
+setup(()=>{
 
 })
