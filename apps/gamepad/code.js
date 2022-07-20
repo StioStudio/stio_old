@@ -27,10 +27,9 @@ pen.x = 500
 pen.y = 400
 pen.style.color = rgb(100, 200, 0)
 pen.style.radius = "50%"
-pen.style.text = 
-`
-pls click a button on your controler
-`
+pen.style.text = "pls click a button on your controler";
+
+
 pen.rectangle()
 
 /*
@@ -227,10 +226,10 @@ function updateControllers() {
 }
 
 window.addEventListener("gamepadconnected",
-    function (e) {
-        gamepads = navigator.getGamepads();
-        gamepadPos = e.gamepad.index;
-        gamepad = navigator.getGamepads()[e.gamepad.index];
+function (e) {
+    gamepads = navigator.getGamepads();
+    gamepadPos = e.gamepad.index;
+    gamepad = navigator.getGamepads()[e.gamepad.index];
 },false);
 
 addEventListener("gamepadconnected", () => {
@@ -313,7 +312,7 @@ var strongMagnitudeInput = document.createElement("input");
 strongMagnitudeInput.placeholder = "Strong Magnitude ( 0.0 <-> 1.0 )"
 
 var durationTime = document.createElement("input");
-durationTime.placeholder = "Duration ( secs )"
+durationTime.placeholder = "Duration ( 0.0 <-> 5.0 secs )"
 
 
 btns.appendChild(weakMagnitudeInput);
