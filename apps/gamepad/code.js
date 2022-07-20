@@ -50,7 +50,7 @@ function makeTextGamepad(){
     
     //left under stick
     pen.style.reset()
-    pen.x = gamepad.axes[0]*100+leftStick_X
+    pen.x = con.lX*100+leftStick_X
     pen.y = 600
     pen.style.height = 10
     pen.style.width = 10
@@ -65,17 +65,17 @@ function makeTextGamepad(){
     pen.x = leftStick_X-100
     pen.y = 650
     pen.style.textSize = 20
-    pen.style.text = gamepad.axes[0]
+    pen.style.text = con.lX
     pen.rectangle()
     
     pen.y = 680
-    pen.style.text = "gamepad.axes[0]"
+    pen.style.text = "con.lX"
     pen.rectangle()
     
     //left side stick
     pen.style.reset()
     pen.x = leftStick_X-200
-    pen.y = gamepad.axes[1]*100+400
+    pen.y = con.lY*100+400
     pen.style.height = 10
     pen.style.width = 10
     pen.style.radius = "50%"
@@ -89,17 +89,17 @@ function makeTextGamepad(){
     pen.x = leftStick_X-430
     pen.y = 400
     pen.style.textSize = 20
-    pen.style.text = gamepad.axes[1]
+    pen.style.text = con.lY
     pen.rectangle()
     
     pen.y = 430
-    pen.style.text = "gamepad.axes[1]"
+    pen.style.text = "con.lY"
     pen.rectangle()
     
     
     //rigth under stick
     pen.style.reset()
-    pen.x = gamepad.axes[2]*100+rigthStick_X
+    pen.x = con.rX*100+rigthStick_X
     pen.y = 600
     pen.style.height = 10
     pen.style.width = 10
@@ -114,18 +114,18 @@ function makeTextGamepad(){
     pen.x = rigthStick_X-100
     pen.y = 650
     pen.style.textSize = 20
-    pen.style.text = gamepad.axes[2]
+    pen.style.text = con.rX
     pen.rectangle()
     
     pen.y = 680
-    pen.style.text = "gamepad.axes[2]"
+    pen.style.text = "con.rX"
     pen.rectangle()
     
     
     //rigth side stick
     pen.style.reset()
     pen.x = rigthStick_X+200
-    pen.y = gamepad.axes[3]*100+400
+    pen.y = con.rY*100+400
     pen.style.height = 10
     pen.style.width = 10
     pen.style.radius = "50%"
@@ -139,12 +139,12 @@ function makeTextGamepad(){
     pen.x = rigthStick_X+230
     pen.y = 400
     pen.style.textSize = 20
-    pen.style.text = gamepad.axes[3]
+    pen.style.text = con.rY
     pen.rectangle()
 
     
     pen.y = 430
-    pen.style.text = "gamepad.axes[3]"
+    pen.style.text = "con.rY"
     pen.rectangle()
 }
 
@@ -154,15 +154,15 @@ function makeRigthStick(){
     pen.style.width = 100
     pen.style.radius = "50%"
     // If you click on R3, the joystick color gets darkened
-    if (gamepad.buttons[11].pressed) {
+    if (con.r3) {
         pen.style.color = rgb(0, 120, 120)
     }
     else {
         pen.style.color = rgb(0, 200, 200)
     }
     // pen.style.color = color.rgb(0, 200, 200)
-    pen.x = gamepad.axes[2] * 100 + rigthStick_X;
-    pen.y = gamepad.axes[3] * 100 + 400;
+    pen.x = con.rX * 100 + rigthStick_X;
+    pen.y = con.rY * 100 + 400;
     
     pen.rectangle()
     
@@ -189,15 +189,15 @@ function makeLeftStick(){
     pen.style.radius = "50%"
     
     // If you click on L3, the joy stick color gets darkened
-    if (gamepad.buttons[10].pressed) {
+    if (con.l3) {
         pen.style.color = rgb(120, 120, 0)
     }
     else {
         pen.style.color = rgb(200, 200, 0)
     }
     // pen.style.color = color.rgb(200, 200, 0)
-    pen.x = gamepad.axes[0] * 100 + leftStick_X;
-    pen.y = gamepad.axes[1] * 100 + 400;
+    pen.x = con.lX * 100 + leftStick_X;
+    pen.y = con.lY * 100 + 400;
     pen.rectangle()
     
     pen.hide()
@@ -234,10 +234,11 @@ function (e) {
     gamepad = navigator.getGamepads()[e.gamepad.index];
 },false);
 
+
 addEventListener("gamepadconnected", () => {
     repeat.forever(()=>{
 
-        updateControllers()
+        //updateControllers()
 
         pen.clear()
 
@@ -272,7 +273,7 @@ addEventListener("gamepadconnected", () => {
 
         playVbrtion.onclick = function() {
 
-            say(gamepad);
+            updateControllers()
 
             gamepad.vibrationActuator.playEffect("dual-rumble", {
                 startDelay: 0,
