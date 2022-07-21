@@ -45,10 +45,17 @@ repeat.forever(()=>{
 
 setup()
 
-eventer.listen("psButtonDown",(e)=>{
-    say(e)
+eventer.listen("psUp",(e)=>{
+    say(e,"hello")
 })
 
+eventer.listen("psPress",(e)=>{
+    say(e,"hei")
+})
+
+eventer.listen("psDown",(e)=>{
+    say(e,"hi")
+})
 
 
 

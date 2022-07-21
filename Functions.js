@@ -69,7 +69,11 @@ function sec(_num) {
 
     },
 
-    psButton:false
+    psButton:false,
+    psButton1:false,
+    psButton2:false,
+    psButton3:false,
+    psButton4:false,
 
 
 }
@@ -701,24 +705,50 @@ addEventListener("gamepadconnected", ()=>{
 forever(()=>{
     if(and((con1.ps||con2.ps||con3.ps||con4.ps),(!(naf.psButton)))){
         naf.psButton = true
-        if(con1.ps)eventer.send("psButtonDown", 1)
-        if(con2.ps)eventer.send("psButtonDown", 2)
-        if(con3.ps)eventer.send("psButtonDown", 3)
-        if(con4.ps)eventer.send("psButtonDown", 4)
+        if(con1.ps){
+            eventer.send("psDown", 1)
+            naf.psButton1 = true
+        }
+        if(con2.ps){
+            eventer.send("psDown", 2)
+            naf.psButton2 = true
+        }
+        if(con3.ps){
+            eventer.send("psDown", 3)
+            naf.psButton3 = true
+        }
+        if(con4.ps){
+            eventer.send("psDown", 4)
+            naf.psButton4 = true
+        }
     }
-    if(!(con1.ps||con2.ps||con3.ps||con4.ps)){
+    if(and(!(con1.ps||con2.ps||con3.ps||con4.ps),((naf.psButton)))){
         naf.psButton = false
+        if(naf.psButton1){
+            eventer.send("psUp", 1)
+            naf.psButton1 = false
+        }
+        if(naf.psButton2){
+            eventer.send("psUp", 2)
+            naf.psButton2 = false
+        }
+        if(naf.psButton3){
+            eventer.send("psUp", 3)
+            naf.psButton3 = false
+        }
+        if(naf.psButton4){
+            eventer.send("psUp", 4)
+            naf.psButton4 = false
+        }
     }
     if((con1.ps||con2.ps||con3.ps||con4.ps)){
-        if(con1.ps)eventer.send("psButtonPress", 1)
-        if(con2.ps)eventer.send("psButtonPress", 2)
-        if(con3.ps)eventer.send("psButtonPress", 3)
-        if(con4.ps)eventer.send("psButtonPress", 4)
+        if(con1.ps)eventer.send("psPress", 1)
+        if(con2.ps)eventer.send("psPress", 2)
+        if(con3.ps)eventer.send("psPress", 3)
+        if(con4.ps)eventer.send("psPress", 4)
     }
 })
-eventer.listen("psButtonDown",()=>{
-
-
+eventer.listen("psDown",()=>{
 
 })
 })
