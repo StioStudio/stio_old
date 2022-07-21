@@ -107,7 +107,7 @@ let enter = "\n"
 function setup({
     divPen = true,
     touchAction = false,
-}={},_func = ()=>{}) {
+} = {},_func = ()=>{}) {
 
     if(!touchAction){
         doc.getElementById("all").style.touchAction = "none"
