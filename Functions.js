@@ -650,7 +650,21 @@ win.con3 = con
 win.con4 = con
 win.cons = {con1,con2,con3,con4}
 
-addEventListener("gamepadconnected", ()=>{ forever(()=>{
+addEventListener("gamepadconnected", ()=>{
+    win.getGamepads = nav.getGamepads()
+    if (!(undefined == win.getGamepads[3])){
+        conPrimary = 3
+    }
+    if (!(undefined == win.getGamepads[2])){
+        conPrimary = 2
+    }
+    if (!(undefined == win.getGamepads[1])){
+        conPrimary = 1 
+    }
+    if (!(undefined == win.getGamepads[0])){
+        conPrimary = 0
+    }
+    forever(()=>{
     
     win.getGamepads = nav.getGamepads()
 

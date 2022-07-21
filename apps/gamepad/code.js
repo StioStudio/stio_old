@@ -1,4 +1,4 @@
-setup(()=>{})
+setup({touchAction:false})
 say("Made with " + "%c\u2764", "color:#fc4444; font-family: ; font-size: 25px;", "by nikeedev and stio_studio!");
 
 let leftStick_X = 600
