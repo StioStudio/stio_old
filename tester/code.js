@@ -45,14 +45,6 @@ repeat.forever(()=>{
 
 setup({})
 
-eventer.listen("hi",()=>{
-    say("hi")
+eventer.listen("psButton",(e)=>{
+    say(e)
 })
-
-forever(()=>{
-    if(mouseClick){
-        eventer.send("hi")
-    }
-})
-
-

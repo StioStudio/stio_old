@@ -720,7 +720,15 @@ addEventListener("gamepadconnected", ()=>{
     }
     win.cons = {con1,con2,con3,con4}
     con = conF(conPrimary)
-})})
-
+})
+forever(()=>{
+    if(con1.ps||con2.ps||con3.ps||con4.ps){
+        if(con1.ps)eventer.send("psButton", 1)
+        if(con2.ps)eventer.send("psButton", 2)
+        if(con3.ps)eventer.send("psButton", 3)
+        if(con4.ps)eventer.send("psButton", 4)
+    }
+})
+})
 
 
