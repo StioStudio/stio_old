@@ -42,6 +42,15 @@ repeat.forever(()=>{
 
 })
 */
+/*
+let ab1 = true
+a1:while (ab1) {
+
+    ab1 = false
+}
+
+//goback123
+*/
 
 setup()
 
@@ -57,14 +66,5 @@ eventer.listen("psDown",(e)=>{
     say(e,"hi")
 })
 
-
-
-let ab1 = true
-a1:while (ab1) {
-
-    ab1 = false
-}
-
-//goback123
 
 

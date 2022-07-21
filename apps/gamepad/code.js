@@ -1,8 +1,8 @@
 setup({touchAction:false})
 say("Made with " + "%c\u2764", "color:#fc4444; font-family: ; font-size: 25px;", "by nikeedev and stio_studio!");
 
-let leftStick_X = 600
-let rigthStick_X = 1000
+let leftStick_X = 330
+let rigthStick_X = 680
 
 
 //                   Created  by
@@ -65,7 +65,7 @@ function makeTextGamepad(){
     pen.x = leftStick_X-100
     pen.y = 650
     pen.style.textSize = 20
-    pen.style.text = con.lX
+    pen.style.text = round(con.lX*1000000)/1000000
     pen.rectangle()
     
     pen.y = 680
@@ -86,10 +86,10 @@ function makeTextGamepad(){
     pen.hide()
     pen.style.height = 0
     pen.style.width = 0
-    pen.x = leftStick_X-430
+    pen.x = leftStick_X-300
     pen.y = 400
     pen.style.textSize = 20
-    pen.style.text = con.lY
+    pen.style.text = round(con.lY*1000000)/1000000
     pen.rectangle()
     
     pen.y = 430
@@ -114,7 +114,7 @@ function makeTextGamepad(){
     pen.x = rigthStick_X-100
     pen.y = 650
     pen.style.textSize = 20
-    pen.style.text = con.rX
+    pen.style.text = round(con.rX*1000000)/1000000
     pen.rectangle()
     
     pen.y = 680
@@ -139,7 +139,7 @@ function makeTextGamepad(){
     pen.x = rigthStick_X+230
     pen.y = 400
     pen.style.textSize = 20
-    pen.style.text = con.rY
+    pen.style.text = round(con.rY*1000000)/1000000
     pen.rectangle()
 
     

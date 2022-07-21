@@ -337,6 +337,12 @@ function abs(element) {
     return(Math.abs(element))
 }
 
+
+function round(_num, amount=1){
+    let a = 10**amount
+    return(Math.round(_num*a)/a)
+}
+
 /** @default
  * Math
  * Gives you a the distance between the cordinates
