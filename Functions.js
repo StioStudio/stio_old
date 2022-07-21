@@ -67,8 +67,9 @@ function sec(_num) {
 
 
 
-    }
+    },
 
+    psButton:false
 
 
 }
@@ -454,10 +455,10 @@ function rgba(red, green, blue, transparency){
 }
 
 let eventer = {
-    listen(_name_, _text){
+    listen(_name_, _func){
         let code = {
             _name_,
-            _text
+            _text: _func
         }
         naf.eventList.push(code)
     },
@@ -722,12 +723,27 @@ addEventListener("gamepadconnected", ()=>{
     con = conF(conPrimary)
 })
 forever(()=>{
-    if(con1.ps||con2.ps||con3.ps||con4.ps){
-        if(con1.ps)eventer.send("psButton", 1)
-        if(con2.ps)eventer.send("psButton", 2)
-        if(con3.ps)eventer.send("psButton", 3)
-        if(con4.ps)eventer.send("psButton", 4)
+    if(and((con1.ps||con2.ps||con3.ps||con4.ps),(!(naf.psButton)))){
+        naf.psButton = true
+        if(con1.ps)eventer.send("psButtonDown", 1)
+        if(con2.ps)eventer.send("psButtonDown", 2)
+        if(con3.ps)eventer.send("psButtonDown", 3)
+        if(con4.ps)eventer.send("psButtonDown", 4)
     }
+    if(!(con1.ps||con2.ps||con3.ps||con4.ps)){
+        naf.psButton = false
+    }
+    if((con1.ps||con2.ps||con3.ps||con4.ps)){
+        if(con1.ps)eventer.send("psButtonPress", 1)
+        if(con2.ps)eventer.send("psButtonPress", 2)
+        if(con3.ps)eventer.send("psButtonPress", 3)
+        if(con4.ps)eventer.send("psButtonPress", 4)
+    }
+})
+eventer.listen("psButtonDown",()=>{
+
+    
+
 })
 })
 
