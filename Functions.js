@@ -90,8 +90,8 @@ function makeText(...toText){
     return(`${toText}`)
 }
 
-function RunText(...text_to_func){
-    return( Function(text_to_func) )
+function makeFunc(...toFunc){
+    return( Function(toFunc) )
 }
 
 let enter = "\n"
@@ -462,41 +462,17 @@ let eventer = {
         }
         naf.eventList.push(code)
     },
-    send(_name, _text, _timeout){
+    send(_name, _var){
+        let i = 0
 
+        repeat(naf.eventList.length,()=>{
 
-        if (_timeout){
+            if ( naf.eventList[i]._name_ == _name ){
+                naf.eventList[i]._text(_var)
+            }
 
-            setTimeout(() => {
-
-                let i = 0
-
-                repeat(naf.eventList.length,()=>{
-
-                    if ( naf.eventList[i]._name_ == _name ){
-                        naf.eventList[i]._text(_text)
-                    }
-
-                    i++
-                })
-
-            }, 0);
-        }
-        else{
-
-            let i = 0
-
-            repeat(naf.eventList.length,()=>{
-
-                if ( naf.eventList[i]._name_ == _name ){
-                    naf.eventList[i]._text(_text)
-                }
-
-                i++
-            })
-
-        }
-
+            i++
+        })
     }
 }
 
@@ -742,7 +718,7 @@ forever(()=>{
 })
 eventer.listen("psButtonDown",()=>{
 
-    
+
 
 })
 })
