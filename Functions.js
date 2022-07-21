@@ -99,14 +99,21 @@ let enter = "\n"
  * @default 
  * place all of your code in her
  */
-function setup(_text) {
+function setup({
+    divPen = true,
+    touchAction = false,
+},_func = ()=>{}) {
 
-    doc.getElementById("all").style.touchAction = "none"
-
-    naf.makeDivId("pen")
+    if(!touchAction){
+        doc.getElementById("all").style.touchAction = "none"
+    }
+        
+    if(divPen){
+        naf.makeDivId("pen")
+    }
     
-    requestAnimationFrame(_text)
-
+    requestAnimationFrame(_func)
+    
 }
 
 /** @default
@@ -123,21 +130,17 @@ function say(..._text) {
         }
     }
  */
-
-let repeat = {
-    
-    times(times, _text) {
-        for (let i = 0; i < times; i++) {
-            _text()
-        }
-    },
-
-    forever(_text){
-        let update = () => {
-            _text()
-            requestAnimationFrame(update)
-        }
+function forever(_func){
+    let update = () => {
+        _func()
         requestAnimationFrame(update)
+    }
+    requestAnimationFrame(update)
+}
+
+function repeat(times, _func) {
+    for (let i = 0; i < times; i++) {
+        _func()
     }
 }
 
@@ -467,7 +470,7 @@ let eventer = {
 
                 let i = 0
 
-                repeat.times(naf.eventList.length,()=>{
+                repeat(naf.eventList.length,()=>{
 
                     if ( naf.eventList[i]._name_ == _name ){
                         naf.eventList[i]._text(_text)
@@ -482,7 +485,7 @@ let eventer = {
 
             let i = 0
 
-            repeat.times(naf.eventList.length,()=>{
+            repeat(naf.eventList.length,()=>{
 
                 if ( naf.eventList[i]._name_ == _name ){
                     naf.eventList[i]._text(_text)
@@ -647,7 +650,7 @@ win.con3 = con
 win.con4 = con
 win.cons = {con1,con2,con3,con4}
 
-addEventListener("gamepadconnected", ()=>{ repeat.forever(()=>{
+addEventListener("gamepadconnected", ()=>{ forever(()=>{
     
     win.getGamepads = nav.getGamepads()
 
@@ -704,4 +707,6 @@ addEventListener("gamepadconnected", ()=>{ repeat.forever(()=>{
     win.cons = {con1,con2,con3,con4}
     con = conF(conPrimary)
 })})
+
+
 

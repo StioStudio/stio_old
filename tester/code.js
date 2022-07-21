@@ -43,5 +43,17 @@ repeat.forever(()=>{
 })
 */
 
+setup({})
+
+eventer.listen("hi",()=>{
+    say("hi")
+})
 
 
+forever(()=>{
+    if(mouseClick){
+        eventer.send("hi",()=>{
+            say("hi")
+        })
+    }
+})

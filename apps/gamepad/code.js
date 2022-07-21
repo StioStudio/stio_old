@@ -236,7 +236,7 @@ function (e) {
 
 
 addEventListener("gamepadconnected", () => {
-    repeat.forever(()=>{
+    forever(()=>{
 
         //updateControllers()
 
