@@ -49,11 +49,10 @@ eventer.listen("hi",()=>{
     say("hi")
 })
 
-
 forever(()=>{
     if(mouseClick){
-        eventer.send("hi",()=>{
-            say("hi")
-        })
+        eventer.send("hi")
     }
 })
+
+
