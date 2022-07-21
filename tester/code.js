@@ -43,8 +43,21 @@ repeat.forever(()=>{
 })
 */
 
-setup({})
+setup()
 
-eventer.listen("psButton",(e)=>{
+eventer.listen("psButtonDown",(e)=>{
     say(e)
 })
+
+
+
+
+let ab1 = true
+a1:while (ab1) {
+
+    ab1 = false
+}
+
+//goback123
+
+
