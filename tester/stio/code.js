@@ -1,4 +1,3 @@
-setup()
 //var a = "hello"
 //window.eval(`
 //var ${a} = 7;
@@ -52,8 +51,19 @@ a1:while (ab1) {
 
 //goStart123
 */
-
 /*
+say("hello")
+
+let img = await loadImage("https://stiostudio.github.io/setup/bilder/Epple.gif")
+
+document.body.appendChild(img)
+
+say("hi")
+*/
+
+
+
+
 let goStart
 let goEnd
 let goBack
@@ -87,22 +97,9 @@ continue a1
 
 say(vari)
 eval(vari)()
-*/
 
-/*
-say("hello")
 
-let img = await loadImage("https://stiostudio.github.io/setup/bilder/Epple.gif")
 
-document.body.appendChild(img)
 
-say("hi")
-*/
-function test(optons={}){
-    say(optons)
-}
 
-test({
-    hello:"abc",
-    hi:123
-})
+
