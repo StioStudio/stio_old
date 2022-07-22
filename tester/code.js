@@ -1,3 +1,4 @@
+setup()
 //var a = "hello"
 //window.eval(`
 //var ${a} = 7;
@@ -45,17 +46,17 @@ repeat.forever(()=>{
 /*
 let ab1 = true
 a1:while (ab1) {
-
+    
     ab1 = false
 }
 
 //goStart123
 */
 
+/*
 let goStart
 let goEnd
 let goBack
-setup()
 
 let vari = ()=>{
     say("hello")
@@ -86,3 +87,11 @@ continue a1
 
 say(vari)
 eval(vari)()
+*/
+say("hello")
+
+let img = await loadImage("https://stiostudio.github.io/setup/bilder/Epple.gif")
+
+document.body.appendChild(img)
+
+say("hi")
