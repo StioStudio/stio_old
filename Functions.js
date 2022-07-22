@@ -5,6 +5,8 @@ let nav = navigator
 
 let win = window
 
+let nothing = ""
+
 /**@default
  * I need help with this
  */
@@ -571,12 +573,16 @@ addEventListener("pointermove",(e)=>{
 })
 
 Array.prototype.remove = function(_num){
-    const array = this.valueOf()
-    const index = array.indexOf(_num);
+    let array = this.valueOf()
+    let index = array.indexOf(_num);
     if (index > -1) {
         array.splice(index, 1);
     }
     return(array)
+}
+
+String.prototype.remove = function(_text){
+    return(this.valueOf().replace(_text,""))
 }
 
 function checkKeys(_key){

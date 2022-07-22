@@ -49,22 +49,40 @@ a1:while (ab1) {
     ab1 = false
 }
 
-//goback123
+//goStart123
 */
 
+let goStart
+let goEnd
+let goBack
 setup()
 
-eventer.listen("psUp",(e)=>{
-    say(e,"hello")
-})
+let vari = ()=>{
+    say("hello")
+    let a = 0
+    goStart
+    say("hi")
+    a++
+    if (a==1){
+        goBack
+    }
+    goEnd
+}
 
-eventer.listen("psPress",(e)=>{
-    say(e,"hei")
-})
+vari = makeText(vari)
 
-eventer.listen("psDown",(e)=>{
-    say(e,"hi")
-})
+say(vari)
 
+vari = vari.replace("goStart",`
+let ab1 = true
+a1:while (ab1) {`)
 
+vari = vari.replace("goEnd",`ab1 = false
+}`)
 
+vari = vari.replace("goBack",`
+continue a1
+`)
+
+say(vari)
+eval(vari)()
