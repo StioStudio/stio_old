@@ -155,9 +155,12 @@ function repeat(times, _func) {
 }
 
 let pen = {
-
-    style: {
-
+    
+    style: { 
+        hide(){
+            this.style.color = "#00000000"
+            this.style.borderColor = "#00000000"
+        },
         reset(){
 
             this.color = "#ff0000"
@@ -176,9 +179,11 @@ let pen = {
 
             this.text = ""
 
-            textType = "none"
+            this.textType = "none"
 
-            textSize = 50
+            this.textSize = 50
+
+            this.innerHTML = doc.createElement("img")
     
         },
 
@@ -222,6 +227,8 @@ let pen = {
 
         textSize: 50,
 
+        innerHTML:doc.createElement("div"),
+
     },
 
     varReset(){
@@ -241,17 +248,14 @@ let pen = {
         this.y += sin(this.rotation - 90) * move
     },
 
-    hide(){
-        this.style.color = "#00000000"
-        this.style.borderColor = "#00000000"
-    },
 
     /** @default
      * Makes a rectangle on the html/website.
+     * You can style the rectangle with pen.style."name on style"
      */
     rectangle(){
         let SP = smallestHW()/1000
-        let div = doc.createElement("div");
+        let div = this.style.innerHTML;
         naf.dotNum++
         div.id = naf.dotNum
 
@@ -435,7 +439,7 @@ let img = {
        naf.imgSaves.push(loadImage(_imgUrl)) 
     },
     get(_imgName){
-        if(!naf.imgName.indexOf(_imgName) == undefined){
+        if(naf.imgName.includes(_imgName)){
             return(naf.imgSaves[naf.imgName.indexOf(_imgName)])
         }
         return(doc.createElement("img"))

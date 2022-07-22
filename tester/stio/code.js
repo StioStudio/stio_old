@@ -100,11 +100,16 @@ eval(vari)()
 
 setup()
 
-img.save("appel", "")
+img.save("apple", "https://stiostudio.github.io/setup/bilder/Epple.gif")
 
-say(img.get("fail"))
-
-doc.getElementById("all").appendChild(img.get("fail"))
-say("hi"+enter+"there")
-
-
+pen.style.innerHTML = img.get("apple")
+pen.x = 400
+pen.y = 400
+pen.style.height = 200
+pen.style.width = 200
+pen.rotation = 30
+pen.style.borderSize = 10
+pen.style.borderColor = rgb(150, 50, 130)
+pen.style.radius = "20%"
+pen.style.color = rgba(255,170,50,50)
+pen.rectangle()
