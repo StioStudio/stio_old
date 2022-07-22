@@ -88,6 +88,8 @@ continue a1
 say(vari)
 eval(vari)()
 */
+
+/*
 say("hello")
 
 let img = await loadImage("https://stiostudio.github.io/setup/bilder/Epple.gif")
@@ -95,3 +97,12 @@ let img = await loadImage("https://stiostudio.github.io/setup/bilder/Epple.gif")
 document.body.appendChild(img)
 
 say("hi")
+*/
+function test(optons={}){
+    say(optons)
+}
+
+test({
+    hello:"abc",
+    hi:123
+})
