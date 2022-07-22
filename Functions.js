@@ -416,7 +416,7 @@ function mod(a, b) {
     return(a % b)
 }
 
-async function loadImage(url) {
+function loadImage(url) {
     let img;
     new Promise((resolve) => {
         img = new Image();
