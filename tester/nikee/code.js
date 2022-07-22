@@ -1,6 +1,6 @@
 var image_data = [[], []];
 
-function setup2({divPen = true, touchAction = false} = {}, /*Images*/Images = [[]], /*Audios*/Audios = [], _func = () => {})
+function setup_test({divPen = true, touchAction = false} = {}, /*Images*/Images = [[]], /*Audios*/Audios = [], _func = () => {})
 {
     if (!Images.length == 0) {
         for (let i = 0; i < Images.length; i++) {
@@ -34,14 +34,15 @@ function get_image(name)
 }
 
 
-setup2({divPen: false, touchAction: false}, [
-    ["img1", "../../setup/bilder/epple.png"],
-    ["img2", "../../apps/old_website/bilder/epple2.png"]
-])
+setup_test({divPen: false, touchAction: false}, [
+    ["img1", "./../../setup/bilder/epple.png"],
+    ["img2", "./../../apps/old_website/bilder/epple2.png"]
+],
+()=>{
+    var test2 = get_image("img2")
 
-var test2 = get_image("img2")
-
-console.log(image_data[1][0])
+    console.log(image_data[1][0])    
+})
 
 //console.log(test2)
 

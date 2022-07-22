@@ -7,15 +7,16 @@ let win = window
 
 let nothing = ""
 
+let enter = `
+`
+let space = " "
+
 /**@default
  * I need help with this
  */
  let help = {
-    mouse: "help",
     sprites: "help",
-    img: "help",
     sound: "help",
-    html: "help",
 }
 
 function sec(_num) {
@@ -37,7 +38,7 @@ function sec(_num) {
     makeDivId(_id){
         let div = document.createElement("div")
         div.id = _id
-        document.body.appendChild(div)
+        document.getElementById("all").appendChild(div)
     },
     
     coseineY: 0,
@@ -77,6 +78,10 @@ function sec(_num) {
     psButton3:false,
     psButton4:false,
 
+    imgName:[],
+    imgSaves:[],
+    soundName:[],
+    soundSaves:[],
 
 }
 
@@ -100,15 +105,13 @@ function makeFunc(...toFunc){
     return( Function(toFunc) )
 }
 
-let enter = "\n"
-
 /**
  * @default 
  * place all of your code in her
  */
 function setup({
     divPen = true,
-    touchAction = false,
+    touchAction = true,
 } = {},_func = ()=>{}) {
 
     if(!touchAction){
@@ -426,39 +429,28 @@ function loadImage(url) {
     return img;
 }
 
-/*
 let img = {
-    async save(name, _url){
-
-        naf.storeName.push(name)
-        let rem = await loadImage(_url)
-        naf.store.push(rem)
-
+    save(_imgName, _imgUrl){
+       naf.imgName.push(_imgName)
+       naf.imgSaves.push(loadImage(_imgUrl)) 
     },
-    get(name){
-
-        return naf.store[naf.storeName.indexOf(name)]
-
+    get(_imgName){
+        if(!naf.imgName.indexOf(_imgName) == undefined){
+            return(naf.imgSaves[naf.imgName.indexOf(_imgName)])
+        }
+        return(doc.createElement("img"))
     }
 }
-*/
 
-/*
 let sound = {
-    async save(name, _url){
-
-        naf.storeName.push(name)
-        let rem = await loadImage(_url)
-        naf.store.push(rem)
-
+    save(_soundName, _soundUrl){
+       naf.soundName.push(_soundName)
+       naf.soundSaves.push(loadImage(_soundUrl)) 
     },
-    get(name){
-
-        return ( naf.store[naf.storeName.find(name)] )
-
+    get(_soundName){
+        return(naf.soundSaves[naf.soundName.indexOf(_soundName)])
     }
 }
-*/
 
 function rgb(red, green, blue){
     return("#" + naf.TenToHex(red) + naf.TenToHex(green) + naf.TenToHex(blue))
@@ -489,74 +481,6 @@ let eventer = {
         })
     }
 }
-
-/*
-let mouse = {
-
-    all: undefined,
-
-    x(item){
-        this.all.pageX
-    },
-    y(item){
-
-    }
-}
-
-doc.addEventListener("pointerdown", e => {
-    const dot = document.createElement("div")
-    dot.classList.add("dot")
-    dot.id = e.pointerId
-    positionDot(e, dot)
-    document.getElementById("mouse").append(dot)
-})
-
-doc.addEventListener("pointermove", e => {
-    const dot = document.getElementById(e.pointerId)
-    if (dot == null) return
-    positionDot(e, dot)
-})
-
-doc.addEventListener("pointerup", e =>{
-    const dot = document.getElementById(e.pointerId)
-    if (dot == null) return
-    dot.remove()
-})
-
-doc.addEventListener("pointercancel", e => {
-    const dot = document.getElementById(e.pointerId)
-    if (dot == null) return
-    dot.remove()
-})
-
-
-function positionDot(e, dot) {
-    mouse.all = e
-    mouse.x = e.pageX
-    mouse.y = e.pageY
-    dot.style.position = "fixed"
-    dot.style.width = `${e.width * 10}px`
-    dot.style.height = `${e.height * 10}px`
-    dot.style.left = `${e.pageX + 100}px`
-    dot.style.top = `${e.pageY}px`
-    dot.style.backgroundColor = "#ff0000"
-}
-
-let html = {
-    
-    style:{
-        
-        backgroundColor: "#ff0000",
-        
-    },
-    
-    make(element){
-        
-        
-        
-    }
-}
-*/
 
 let mouseClick = false
 addEventListener("pointerdown", ()=>{

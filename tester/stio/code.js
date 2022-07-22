@@ -5,7 +5,6 @@
 //console.log(hello)
 
 /*
-setup(()=>{})
 
 let x1 = 0
 let y1 = 0
@@ -22,7 +21,7 @@ repeat.forever(()=>{
     pen.x = mouse_X
     pen.y = mouse_Y
     pen.rectangle()
-
+    
     if(con1.active){
         pen.style.color = rgb(0,0,255)
         x1 += con1.lX * 5
@@ -39,7 +38,7 @@ repeat.forever(()=>{
         pen.y = y2
         pen.rectangle()
     }
-
+    
 })
 */
 /*
@@ -54,16 +53,16 @@ a1:while (ab1) {
 /*
 say("hello")
 
-let img = await loadImage("https://stiostudio.github.io/setup/bilder/Epple.gif")
+let sound = await loadImage("https://stiostudio.github.io/setup/bilder/Epple.gif")
 
-document.body.appendChild(img)
+document.body.appendChild(sound)
 
 say("hi")
 */
 
 
 
-
+/*
 let goStart
 let goEnd
 let goBack
@@ -96,8 +95,16 @@ continue `)
 
 say(vari)
 eval(vari)()
+*/
 
 
+setup()
 
+img.save("appel", "")
+
+say(img.get("fail"))
+
+doc.getElementById("all").appendChild(img.get("fail"))
+say("hi"+enter+"there")
 
 
