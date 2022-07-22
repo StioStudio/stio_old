@@ -75,7 +75,7 @@ let vari = ()=>{
     say("hi")
     a++
     if (a==1){
-        goBack
+        goBacka1
     }
     goEnd
 }
@@ -92,12 +92,10 @@ vari = vari.replace("goEnd",`ab1 = false
 }`)
 
 vari = vari.replace("goBack",`
-continue a1
-`)
+continue `)
 
 say(vari)
 eval(vari)()
-
 
 
 
