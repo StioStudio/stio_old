@@ -416,12 +416,14 @@ function mod(a, b) {
     return(a % b)
 }
 
-function loadImage(url) {
-    return new Promise((resolve) => {
-        const img = new Image();
+async function loadImage(url) {
+    let img;
+    new Promise((resolve) => {
+        img = new Image();
         img.onload = () => resolve(img);
         img.src = url;
     });
+    return img;
 }
 
 /*
