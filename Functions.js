@@ -417,11 +417,13 @@ function mod(a, b) {
 }
 
 function loadImage(url) {
-    return new Promise((resolve) => {
-        const img = new Image();
+    let img;
+    new Promise((resolve) => {
+        img = new Image();
         img.onload = () => resolve(img);
         img.src = url;
     });
+    return img;
 }
 
 /*
