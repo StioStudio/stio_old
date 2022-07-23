@@ -1,50 +1,28 @@
-var image_data = [[], []];
-
-function setup_test({divPen = true, touchAction = false} = {}, /*Images*/Images = [[]], /*Audios*/Audios = [], _func = () => {})
-{
-    if (!Images.length == 0) {
-        for (let i = 0; i < Images.length; i++) {
-            
-            say(Images[i][0]);
-            image_data[0].push(Images[i][0]);
-            
-            say(Images[i][1]);
-            loadImage(Images[i][1]).then(img => image_data[1].push(img));
-        
-        }
-    }
-
-    if(!touchAction){
-        doc.getElementById("all").style.touchAction = "none"
-    }
-        
-    if(divPen){
-        naf.makeDivId("pen")
-    }
-    
-    requestAnimationFrame(_func)
-
-    console.log(image_data)
-}
 
 
-function get_image(name)
-{
-    return image_data[1][image_data[0].indexOf(name)]
-}
+setup()
 
+img.save("apple", "https://stiostudio.github.io/setup/bilder/Epple.gif")
 
-setup_test({divPen: false, touchAction: false}, [
-    ["img1", "./../../setup/bilder/epple.png"],
-    ["img2", "./../../apps/old_website/bilder/epple2.png"]
-],
-()=>{
-    var test2 = get_image("img2")
+sound.save("shoot", "https://nikeedev.github.io/playlib/assets/pickupCoin.wav");
 
-    console.log(image_data[1][0])    
+pen.x = 400
+pen.y = 400
+
+forever(()=>{
+    pen.clear()
+    pen.style.innerHTML = img.get("apple")
+    pen.x = 400
+    pen.y = 400
+    pen.style.height = 200
+    pen.style.width = 200
+    pen.rotation += 0.5
+    pen.style.borderSize = 10
+    pen.style.borderColor = rgb(150, 50, 130)
+    pen.style.radius = "20%"
+    pen.style.color = rgba(255,170,50,50)
+    pen.rectangle()
+
 })
 
-//console.log(test2)
-
-//document.body.appendChild(test2)
 
