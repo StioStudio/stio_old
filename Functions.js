@@ -14,8 +14,8 @@ let space = " "
 /**@default
  * I need help with this
  */
- let help = {
-    sprites: "help",
+let help = {
+    img: "help",
     sound: "help",
 }
 
@@ -423,7 +423,7 @@ function mod(a, b) {
     return(a % b)
 }
 
-function loadImage(url) {
+function LoadImage(url) {
     let img;
     new Promise((resolve) => {
         img = new Image();
@@ -433,10 +433,33 @@ function loadImage(url) {
     return img;
 }
 
+
+//////////////////////////////////////
+// Sound
+//////////////
+document.cookie = "promo_shown=1; Max-Age=2600000; Secure"
+
+function LoadSound(url) {
+    var snd = new Audio();
+    new Promise((resolve, reject) => {
+        snd.preload = "auto";                      // intend to play through
+        snd.autoplay = true;                       // autoplay when loaded
+        snd.onerror = reject;                      // on error, reject
+        snd.onended = resolve;                     // when done, resolve
+        snd.loop = false;
+
+        snd.src = url;       
+    });
+    return snd;
+}
+
+//////////////////////////////////////
+
+
 let img = {
     save(_imgName, _imgUrl){
        naf.imgName.push(_imgName)
-       naf.imgSaves.push(loadImage(_imgUrl)) 
+       naf.imgSaves.push(LoadImage(_imgUrl)) 
     },
     get(_imgName){
         if(naf.imgName.includes(_imgName)){
@@ -447,14 +470,31 @@ let img = {
 }
 
 let sound = {
-    save(_soundName, _soundUrl){
+    async save(_soundName, _soundUrl){
        naf.soundName.push(_soundName)
-       naf.soundSaves.push(loadImage(_soundUrl)) 
+       naf.soundSaves.push(LoadSound(_soundUrl)) 
     },
     get(_soundName){
         return(naf.soundSaves[naf.soundName.indexOf(_soundName)])
-    }
+    },
+
+    play(_soundName, {loop = false} = {})
+    {
+        var snd = naf.soundSaves[naf.soundName.indexOf(_soundName)]
+        snd.loop = loop != null ? loop : false;
+        snd.play()
+    },
+
+    pause(_soundName)
+    {
+        var snd = naf.soundSaves[naf.soundName.indexOf(_soundName)]
+        snd.loop = loop != null ? loop : false;
+        snd.play()
+    },
+
 }
+
+
 
 function rgb(red, green, blue){
     return("#" + naf.TenToHex(red) + naf.TenToHex(green) + naf.TenToHex(blue))
