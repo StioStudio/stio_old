@@ -105,6 +105,10 @@ function makeFunc(...toFunc){
     return( Function(toFunc) )
 }
 
+function getElementById(_id) {
+    return(doc.getElementById(_id))
+}
+
 /**
  * @default 
  * place all of your code in her
@@ -112,10 +116,15 @@ function makeFunc(...toFunc){
 function setup({
     divPen = true,
     touchAction = true,
+    pointer = false,
 } = {},_func = ()=>{}) {
 
+    if(!(pointer == false)){
+        getElementById("all").style.cursor = pointer
+    }
+
     if(!touchAction){
-        doc.getElementById("all").style.touchAction = "none"
+        getElementById("all").style.touchAction = "none"
     }
         
     if(divPen){
@@ -158,8 +167,8 @@ let pen = {
     
     style: { 
         hide(){
-            this.style.color = "#00000000"
-            this.style.borderColor = "#00000000"
+            this.color = rgb(255, 255, 255,255);
+            this.borderColor = rgb(255, 255, 255, 255);
         },
         reset(){
 
@@ -183,7 +192,7 @@ let pen = {
 
             this.textSize = 50
 
-            this.innerHTML = doc.createElement("img")
+            this.innerHTML = doc.createElement("div")
     
         },
 
@@ -494,14 +503,15 @@ let sound = {
 
 }
 
-
-
-function rgb(red, green, blue){
-    return("#" + naf.TenToHex(red) + naf.TenToHex(green) + naf.TenToHex(blue))
+function rgb(red, green, blue, transparency = 0){
+    return("#" + naf.TenToHex(red) + naf.TenToHex(green) + naf.TenToHex(blue) + (naf.TenToHex(255-transparency)))
 }
 
-function rgba(red, green, blue, transparency){
-    return("#" + naf.TenToHex(red) + naf.TenToHex(green) + naf.TenToHex(blue) + (naf.TenToHex(255-transparency)))
+function createElement(_element){
+    return(doc.createElement(_element))
+}
+function appendChild(_element){
+    doc.getElementById("all").appendChild(_element)
 }
 
 let eventer = {

@@ -97,12 +97,27 @@ say(vari)
 eval(vari)()
 */
 
-
 setup()
 
+
+let abc = 0
+
 img.save("apple", "https://stiostudio.github.io/setup/bilder/Epple.gif")
+img.save("youtube", "./../../setup/bilder/youtube.png")
+
 forever(()=>{
     pen.clear()
+    
+    pen.style.reset()
+    pen.style.innerHTML = img.get("youtube")
+    pen.style.height = 200
+    pen.style.width = 200
+    pen.rotation = 0
+    abc++
+    pen.x = mouse_X
+    pen.y = mouse_Y
+    pen.rectangle()
+    
     pen.style.innerHTML = img.get("apple")
     pen.x = 400
     pen.y = 400
@@ -112,6 +127,16 @@ forever(()=>{
     pen.style.borderSize = 10
     pen.style.borderColor = rgb(150, 50, 130)
     pen.style.radius = "20%"
-    pen.style.color = rgba(255,170,50,50)
+    pen.style.color = rgb(255,170,50,100)
     pen.rectangle()
+    
 })
+
+
+if (document.pointerLockElement === getElementById("pen")) {
+    console.log('The pointer lock status is now locked');
+    // Do something useful in response
+  } else {
+    console.log('The pointer lock status is now unlocked');
+    // Do something useful in response
+  }
