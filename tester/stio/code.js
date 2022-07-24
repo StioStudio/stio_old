@@ -145,7 +145,6 @@ pen.rectangle()
 
 let play = true
 let player = function () {
-    say(naf.penId)
     if(play) {
         sound.play("sound",{loop: true})
         pen.clear()
