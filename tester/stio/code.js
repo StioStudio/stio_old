@@ -96,12 +96,7 @@ continue `)
 say(vari)
 eval(vari)()
 */
-
-setup()
-
-
-let abc = 0
-
+/*
 img.save("apple", "https://stiostudio.github.io/setup/bilder/Epple.gif")
 img.save("youtube", "./../../setup/bilder/youtube.png")
 
@@ -110,33 +105,40 @@ forever(()=>{
     
     pen.style.reset()
     pen.style.innerHTML = img.get("youtube")
-    pen.style.height = 200
-    pen.style.width = 200
     pen.rotation = 0
-    abc++
+    pen.style.height = 2
+    pen.style.width = 2
     pen.x = mouse_X
     pen.y = mouse_Y
+    pen.style.radius = "50px"
     pen.rectangle()
     
     pen.style.innerHTML = img.get("apple")
     pen.x = 400
     pen.y = 400
-    pen.style.height = 200
+    pen.style.height = 300
     pen.style.width = 200
     pen.rotation = 30
     pen.style.borderSize = 10
     pen.style.borderColor = rgb(150, 50, 130)
-    pen.style.radius = "20%"
+    pen.style.radius = "100px"
     pen.style.color = rgb(255,170,50,100)
     pen.rectangle()
     
 })
+*/
 
 
-if (document.pointerLockElement === getElementById("pen")) {
-    console.log('The pointer lock status is now locked');
-    // Do something useful in response
-  } else {
-    console.log('The pointer lock status is now unlocked');
-    // Do something useful in response
-  }
+setup()
+
+pen.style.innerHTML = createElement('button')
+pen.style.id = "hi"
+pen.style.text = "Hello"
+pen.x = 400
+pen.y = 400
+pen.rectangle()
+
+sound.save("sound","./../../setup/lyd/Dance Energetic.wav")
+getPenId("hi").onkeydown = function (e){
+    say("Press")
+}

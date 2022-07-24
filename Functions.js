@@ -83,6 +83,8 @@ function sec(_num) {
     soundName:[],
     soundSaves:[],
 
+    penId:[],
+
 }
 
 function smallestHW(){
@@ -168,6 +170,7 @@ let pen = {
     style: { 
         hide(){
             this.color = rgb(255, 255, 255,255);
+            this.borderSize = 0
             this.borderColor = rgb(255, 255, 255, 255);
         },
         reset(){
@@ -193,6 +196,8 @@ let pen = {
             this.textSize = 50
 
             this.innerHTML = doc.createElement("div")
+
+            this.id = "none"
     
         },
 
@@ -238,6 +243,8 @@ let pen = {
 
         innerHTML:doc.createElement("div"),
 
+        id: "none",
+
     },
 
     varReset(){
@@ -266,6 +273,7 @@ let pen = {
         let SP = smallestHW()/1000
         let div = this.style.innerHTML;
         naf.dotNum++
+        naf.penId.push(this.style.id)
         div.id = naf.dotNum
 
         div.innerText = this.style.text
@@ -275,8 +283,8 @@ let pen = {
         div.style.backgroundColor = pen.style.color
         div.style.height = pen.style.height*SP+"px"
         div.style.width = pen.style.width*SP+"px"
-        div.style.top =  (this.y*SP - (this.style.height*SP / 2 + this.style.borderSize*SP))+"px"
-        div.style.left = (this.x*SP - (this.style.width*SP / 2 + this.style.borderSize*SP))+"px"
+        div.style.top =  (this.y*SP - (this.style.height*SP / 2 + (this.style.borderSize*SP)))+"px"
+        div.style.left = (this.x*SP - (this.style.width*SP / 2 + (this.style.borderSize*SP)))+"px"
         div.style.borderRadius = this.style.radius
         div.style.border = `${this.style.borderSize*SP}px solid ${this.style.borderColor}`
         div.style.transform = "rotate("+ (this.rotation) +"deg)"
@@ -288,6 +296,12 @@ let pen = {
         document.getElementById("pen").innerHTML = ""
         naf.dotNum = 0
     }
+}
+
+function getPenId(_id){
+
+    return(getElementById((naf.penId.indexOf(_id)+1)))
+
 }
 
 /** @default
@@ -479,7 +493,7 @@ let img = {
 }
 
 let sound = {
-    async save(_soundName, _soundUrl){
+    save(_soundName, _soundUrl){
        naf.soundName.push(_soundName)
        naf.soundSaves.push(LoadSound(_soundUrl)) 
     },
