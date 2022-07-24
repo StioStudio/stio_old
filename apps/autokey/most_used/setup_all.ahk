@@ -7,7 +7,7 @@ Loop, 4{
 Send, ^#{Right}
 }
 Run, C:\Users\espen\AppData\Local\Discord\Update.exe --processStart Discord.exe
-Sleep, 1000
+Sleep, 5000
 Send, ^#{Left}
 Run, "C:\Users\espen\AppData\Local\Programs\Microsoft VS Code\Code.exe"
 Sleep, 5000
