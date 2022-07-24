@@ -134,12 +134,12 @@ setup()
 sound.save("sound", "./../../setup/lyd/Dance Energetic.wav")
 img.save("play", "./../../setup/bilder/play.webp")
 img.save("pause", "./../../setup/bilder/pause.png")
-pen.style.innerHTML = img.get("pause")
+pen.style.innerHTML = img.get("play")
 pen.style.id = "hello"
-pen.x = 400
-pen.y = 200
-pen.style.height = 300
-pen.style.width = 300
+pen.x = 500
+pen.y = 500
+pen.style.height = 1000
+pen.style.width = 1000
 pen.style.color = rgb(255, 255, 255, 255)
 pen.rectangle()
 
@@ -149,7 +149,7 @@ let player = function () {
     if(play) {
         sound.play("sound",{loop: true})
         pen.clear()
-        pen.style.innerHTML = img.get("play")
+        pen.style.innerHTML = img.get("pause")
         pen.rectangle()
         play = false
         getPenId("hello").onclick = player
@@ -157,7 +157,7 @@ let player = function () {
     }
     play = true
     pen.clear()
-    pen.style.innerHTML = img.get("pause")
+    pen.style.innerHTML = img.get("play")
     pen.rectangle()
     sound.pause("sound")
     getPenId("hello").onclick = player
