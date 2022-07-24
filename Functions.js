@@ -295,6 +295,7 @@ let pen = {
     clear(){
         document.getElementById("pen").innerHTML = ""
         naf.dotNum = 0
+        naf.penId = []
     }
 }
 
@@ -466,7 +467,7 @@ function LoadSound(url) {
     var snd = new Audio();
     new Promise((resolve, reject) => {
         snd.preload = "auto";                      // intend to play through
-        snd.autoplay = true;                       // autoplay when loaded
+        snd.autoplay = false;                       // autoplay when loaded
         snd.onerror = reject;                      // on error, reject
         snd.onended = resolve;                     // when done, resolve
         snd.loop = false;

@@ -133,12 +133,12 @@ setup()
 
 pen.style.innerHTML = createElement('button')
 pen.style.id = "hi"
+pen.style.textSize = 200
 pen.style.text = "Hello"
 pen.x = 400
 pen.y = 400
 pen.rectangle()
 
-sound.save("sound","./../../setup/lyd/Dance Energetic.wav")
-getPenId("hi").onkeydown = function (e){
-    say("Press")
-}
+sound.save("sound", "./../../setup/lyd/Dance Energetic.wav")
+getPenId("hi").onclick = function(){sound.play("sound")}
+say(getPenId("hi"))

@@ -70,3 +70,18 @@ Return
 #s::
 WinMaximize, %title%
 Return
+
+::js\::
+a:="``"
+Send, %a%
+Send, %a%
+Send, %a%
+Send, js
+Send,{ShiftDown}{Enter}
+Send, %a%
+Send, %a%
+Send, %a%
+Send, %a%
+Send, {BackSpace}
+Send,{Left 3}
+Return
