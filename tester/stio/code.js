@@ -131,14 +131,36 @@ forever(()=>{
 
 setup()
 
-pen.style.innerHTML = createElement('button')
-pen.style.id = "hi"
-pen.style.textSize = 200
-pen.style.text = "Hello"
+sound.save("sound", "./../../setup/lyd/Dance Energetic.wav")
+img.save("play", "./../../setup/bilder/play.webp")
+img.save("pause", "./../../setup/bilder/pause.png")
+pen.style.innerHTML = img.get("pause")
+pen.style.id = "hello"
 pen.x = 400
-pen.y = 400
+pen.y = 200
+pen.style.height = 300
+pen.style.width = 300
+pen.style.color = rgb(255, 255, 255, 255)
 pen.rectangle()
 
-sound.save("sound", "./../../setup/lyd/Dance Energetic.wav")
-getPenId("hi").onclick = function(){sound.play("sound")}
-say(getPenId("hi"))
+let play = true
+let player = function () {
+    say(naf.penId)
+    if(play) {
+        sound.play("sound",{loop: true})
+        pen.clear()
+        pen.style.innerHTML = img.get("play")
+        pen.rectangle()
+        play = false
+        getPenId("hello").onclick = player
+        return
+    }
+    play = true
+    pen.clear()
+    pen.style.innerHTML = img.get("pause")
+    pen.rectangle()
+    sound.pause("sound")
+    getPenId("hello").onclick = player
+}
+
+getPenId("hello").onclick = player
