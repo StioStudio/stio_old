@@ -59,7 +59,7 @@ function makeTextGamepad(){
     pen.rectangle()
     
     pen.style.reset()
-    pen.hide()
+    pen.style.hide()
     pen.style.height = 0
     pen.style.width = 0
     pen.x = leftStick_X-100
@@ -83,7 +83,7 @@ function makeTextGamepad(){
     pen.rectangle()
     
     pen.style.reset()
-    pen.hide()
+    pen.style.hide()
     pen.style.height = 0
     pen.style.width = 0
     pen.x = leftStick_X-300
@@ -108,7 +108,7 @@ function makeTextGamepad(){
     pen.rectangle()
 
     pen.style.reset()
-    pen.hide()
+    pen.style.hide()
     pen.style.height = 0
     pen.style.width = 0
     pen.x = rigthStick_X-100
@@ -133,7 +133,7 @@ function makeTextGamepad(){
     pen.rectangle()
 
     pen.style.reset()
-    pen.hide()
+    pen.style.hide()
     pen.style.height = 0
     pen.style.width = 0
     pen.x = rigthStick_X+230
@@ -153,6 +153,8 @@ function makeRigthStick(){
     pen.style.height = 100
     pen.style.width = 100
     pen.style.radius = "50%"
+    pen.style.borderColor = rgb()
+    pen.style.borderSize = 6
     // If you click on R3, the joystick color gets darkened
     if (con.r3) {
         pen.style.color = rgb(0, 120, 120)
@@ -165,19 +167,12 @@ function makeRigthStick(){
     pen.y = con.rY * 100 + 400;
     
     pen.rectangle()
-    
-    pen.hide()
-    pen.style.height = 60
-    pen.style.width = 60
-    pen.style.borderSize = 6
-    pen.style.borderColor = rgb(0, 0, 0)
-    pen.rectangle()
-    
+        
     pen.style.reset()
-    pen.hide()
-    pen.style.height = 30
-    pen.style.width = 30
-    pen.style.textSize = 30
+    pen.style.hide()
+    pen.style.height = 50
+    pen.style.width = 50
+    pen.style.textSize = 40
     pen.style.text = "R3"
     pen.rectangle()
 }
@@ -187,6 +182,8 @@ function makeLeftStick(){
     pen.style.height = 100
     pen.style.width = 100
     pen.style.radius = "50%"
+    pen.style.borderSize = 6
+    pen.style.borderColor = rgb(0, 0, 0)
     
     // If you click on L3, the joy stick color gets darkened
     if (con.l3) {
@@ -199,19 +196,12 @@ function makeLeftStick(){
     pen.x = con.lX * 100 + leftStick_X;
     pen.y = con.lY * 100 + 400;
     pen.rectangle()
-    
-    pen.hide()
-    pen.style.height = 60
-    pen.style.width = 60
-    pen.style.borderSize = 6
-    pen.style.borderColor = rgb(0, 0, 0)
-    pen.rectangle()
-    
+        
     pen.style.reset()
-    pen.hide()
-    pen.style.height = 30
-    pen.style.width = 30
-    pen.style.textSize = 30
+    pen.style.hide()
+    pen.style.height = 50
+    pen.style.width = 50
+    pen.style.textSize = 40
     pen.style.text = "L3"
     pen.rectangle()
     

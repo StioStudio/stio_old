@@ -119,7 +119,17 @@ function setup({
     divPen = true,
     touchAction = true,
     pointer = false,
+    autoCSS = "none",
 } = {},_func = ()=>{}) {
+    
+    if(autoCSS == "purple") {
+        getElementById("all").style.backgroundColor = rgb(138,60,138)
+        getElementById("all").style.color = rgb(255,255,255)
+    }
+    if(autoCSS == "darkMode") {
+        getElementById("all").style.backgroundColor = rgb(0,0,0)
+        getElementById("all").style.color = rgb(255,255,255)
+    }
 
     if(!(pointer == false)){
         getElementById("all").style.cursor = pointer
@@ -516,7 +526,7 @@ let sound = {
 
 }
 
-function rgb(red, green, blue, transparency = 0){
+function rgb(red=0, green=0, blue=0, transparency = 0){
     return("#" + naf.TenToHex(red) + naf.TenToHex(green) + naf.TenToHex(blue) + (naf.TenToHex(255-transparency)))
 }
 

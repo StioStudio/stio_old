@@ -128,10 +128,10 @@ forever(()=>{
 })
 */
 
+/*
+setup({autoCSS: "purple",touchAction: "none"})
 
-setup()
-
-sound.save("sound", "./../../setup/lyd/Dance Energetic.wav")
+sound.save("sound", "./../../setup/lyd/music.wav")
 img.save("play", "./../../setup/bilder/play.webp")
 img.save("pause", "./../../setup/bilder/pause.png")
 pen.style.innerHTML = img.get("play")
@@ -163,3 +163,7 @@ let player = function () {
 }
 
 getPenId("hello").onclick = player
+*/
+
+
+
