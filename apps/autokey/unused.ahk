@@ -3,6 +3,8 @@
 SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 
+
+
 Numpad1::
 Run, "C:\Users\espen\AppData\Local\Programs\Microsoft VS Code\Code.exe"
 Return

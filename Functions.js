@@ -251,7 +251,7 @@ let pen = {
 
         textSize: 50,
 
-        innerHTML:doc.createElement("div"),
+        innerHTML: doc.createElement("div"),
 
         id: "none",
 
@@ -281,7 +281,7 @@ let pen = {
      */
     rectangle(){
         let SP = smallestHW()/1000
-        let div = this.style.innerHTML;
+        let div = this.style.innerHTML
         naf.dotNum++
         naf.penId.push(this.style.id)
         div.id = naf.dotNum

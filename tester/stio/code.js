@@ -1,10 +1,4 @@
-//var a = "hello"
-//window.eval(`
-//var ${a} = 7;
-//`)
-//console.log(hello)
-
-/*
+setup()
 
 let x1 = 0
 let y1 = 0
@@ -15,7 +9,7 @@ let y2 = 0
 pen.style.radius = "30%"
 pen.style.borderColor = rgb(255,255,255)
 pen.style.borderSize = 5
-repeat.forever(()=>{
+forever(()=>{
     pen.clear()
     pen.style.color = rgb(255,0,0)
     pen.x = mouse_X
@@ -40,7 +34,7 @@ repeat.forever(()=>{
     }
     
 })
-*/
+
 /*
 let ab1 = true
 a1:while (ab1) {

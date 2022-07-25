@@ -10,3 +10,11 @@ Return
 +|::
 Send, pen.style.
 Return
+
+RAlt & Up::
+Send, {AltDown}{Up}
+return  ; Make left-control a prefix by using it in front of "&" at least once.
+
+RAlt & Down::
+Send, {AltDown}{Down}
+return  ; Make left-control a prefix by using it in front of "&" at least once.

@@ -150,8 +150,8 @@ function makeTextGamepad(){
 
 function makeRigthStick(){
     pen.style.reset()
-    pen.style.height = 100
-    pen.style.width = 100
+    pen.style.height = 90
+    pen.style.width = 90
     pen.style.radius = "50%"
     pen.style.borderColor = rgb()
     pen.style.borderSize = 6
@@ -179,8 +179,8 @@ function makeRigthStick(){
 
 function makeLeftStick(){
     pen.style.reset()
-    pen.style.height = 100
-    pen.style.width = 100
+    pen.style.height = 90
+    pen.style.width = 90
     pen.style.radius = "50%"
     pen.style.borderSize = 6
     pen.style.borderColor = rgb(0, 0, 0)
