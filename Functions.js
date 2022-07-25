@@ -514,7 +514,7 @@ let sound = {
 
     play(_soundName, {loop = false} = {})
     {
-        var snd = naf.soundSaves[naf.soundName.indexOf(_soundName)]
+        var snd = sound.get(_soundName);
         snd.loop = loop != null ? loop : false;
         snd.play()
     },
