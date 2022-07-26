@@ -85,57 +85,44 @@ function sec(_num) {
 
     penId:[],
 
-    makeSleep(_func){
-        let func = String(_func)
-        while (func.includes("sleep")) {
-            let rem = ""
-            let rem_sleep = func.indexOf("sleep")
-            let conter = rem_sleep + 6
-            
-            while (!(func[conter] == ")")) {
-                
-                rem += func[conter]
-                conter++
-            }
-        
-            func = func.slice(0, rem_sleep) + `setTimeout(()=>{` + func.slice(conter+1, func.length-1) + `},${sec(rem)})` + func[func.length-1]
-        }
-        return (func)
-    },
+func_Sleep(_func) {
+    let func = _func
+    let rem = ""
+    let rem_sleep = func.indexOf("sleep")
+    let conter = rem_sleep + 6
     
-    makeGotoLine(_func){
-        let func = String(_func)
-    while (func.includes("goStart")) {
-        let rem = ""
-        let rem_goStart = func.indexOf("goStart")
-        let conter = rem_goStart + 8
+    while (!(func[conter] == ")")) {
         
-        while (!(func[conter] == ")")) {
-            
-            rem += func[conter]
-            conter++
-        }    
-        
-        
-        func = func.replace(`goStart(${rem})`,`
-        let ${rem}a = true
-        ${rem}:while (${rem}a) {`)
+        rem += func[conter]
+        conter++
+    }
+
+    func = func.slice(0, rem_sleep) + "setTimeout(()=>{" + func.slice(conter+1, func.length-1) + `},${sec(rem)})` + func[func.length-1]
+    return (func)
+},
+
+func_goStart(_func){
+let func = _func
+    let rem = ""
+    let rem_goStart = func.indexOf("goStart")
+    let conter = rem_goStart + 8
     
-    }
-    while (func.includes("goEnd")) {
-        let rem = ""
-        let rem_goStart = func.indexOf("goEnd")
-        let conter = rem_goStart + 6
+    while (!(func[conter] == ")")) {
         
-        while (!(func[conter] == ")")) {
-            
-            rem += func[conter]
-            conter++
-        }    
-        
-        func = func.replace(`goEnd(${rem})`,`${rem}a = false
-        }`)
-    }
+        rem += func[conter]
+        conter++
+    }    
+    
+func = func.slice(0, rem_goStart) + (`goStart(${rem})`,`
+let ${rem}a = true
+${rem}:while (${rem}a) {`) + func.slice(conter+1, func.length-1) + `${rem}a = false
+}`+ func[func.length-1]
+return (func)
+},
+
+
+makeAll(_func) {
+    let func = String(_func)
     while (func.includes("goBack")) {
         let rem = ""
         let rem_goStart = func.indexOf("goBack")
@@ -149,8 +136,18 @@ function sec(_num) {
         
         func = func.replace(`goBack(${rem})`,`continue ${rem}`)
     }
-    return (func)
+
+    while (func.includes("goStart")||func.includes("sleep")) {
+        if(func.lastIndexOf("sleep") < func.lastIndexOf("goStart")) {
+            func = this.func_goStart(func)
+        }
+        else{
+            func = this.func_Sleep(func)
+        }
     }
+
+    return(eval(func))
+}
 }
 
 function smallestHW(){
@@ -180,6 +177,9 @@ function getElementById(_id) {
 function goStart(){}
 function goBack(){}
 function goEnd(){}
+
+function sleep(){}
+
 /**
  * @default 
  * place all of your code in her
@@ -189,8 +189,7 @@ function setup({
     touchAction = true,
     pointer = false,
     autoCSS = "none",
-    goToLine = false,
-    sleep = false,
+    extra_funcs = true,
 } = {},_func = ()=>{}) {
     
     if(autoCSS == "purple") {
@@ -215,12 +214,8 @@ function setup({
     }
     let func = _func
 
-    if (sleep) {
-        func = naf.makeSleep(func)
-    }
-
-    if(goToLine){
-        func = naf.makeGotoLine(func)
+    if(extra_funcs){
+        func = naf.makeAll(func)
     }
 
     requestAnimationFrame(eval(func))
