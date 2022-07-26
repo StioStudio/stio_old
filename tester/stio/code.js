@@ -1,4 +1,4 @@
-setup({GotoLine: true}, ()=>{
+setup({goToLine: true}, ()=>{
 
 say("hello")
 let a = 0

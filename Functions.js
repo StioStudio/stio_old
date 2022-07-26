@@ -120,7 +120,7 @@ function setup({
     touchAction = true,
     pointer = false,
     autoCSS = "none",
-    GotoLine = false,
+    goToLine = false,
 } = {},_func = ()=>{}) {
     
     if(autoCSS == "purple") {
@@ -145,7 +145,7 @@ function setup({
     }
     
 
-    if(GotoLine){
+    if(goToLine){
         requestAnimationFrame(makeGotoLine(_func))
     }
     else{
