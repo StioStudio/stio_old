@@ -120,6 +120,7 @@ function setup({
     touchAction = true,
     pointer = false,
     autoCSS = "none",
+    GotoLine = false,
 } = {},_func = ()=>{}) {
     
     if(autoCSS == "purple") {
@@ -143,8 +144,61 @@ function setup({
         naf.makeDivId("pen")
     }
     
-    requestAnimationFrame(_func)
+
+    if(GotoLine){
+        requestAnimationFrame(makeGotoLine(_func))
+    }
+    else{
+        requestAnimationFrame(_func)
+    }    
+}
+
+function makeGotoLine(_func){
+    let func = String(_func)
+while (func.includes("goStart")) {
+    let rem = ""
+    let rem_goStart = func.indexOf("goStart")
+    let conter = rem_goStart + 8
     
+    while (!(func[conter] == ")")) {
+        
+        rem += func[conter]
+        conter++
+    }    
+    
+    
+    func = func.replace(`goStart(${rem})`,`
+    let ${rem}a = true
+    ${rem}:while (${rem}a) {`)
+}
+while (func.includes("goEnd")) {
+    let rem = ""
+    let rem_goStart = func.indexOf("goEnd")
+    let conter = rem_goStart + 6
+    
+    while (!(func[conter] == ")")) {
+        
+        rem += func[conter]
+        conter++
+    }    
+    
+    func = func.replace(`goEnd(${rem})`,`${rem}a = false
+    }`)
+}
+while (func.includes("goBack")) {
+    let rem = ""
+    let rem_goStart = func.indexOf("goBack")
+    let conter = rem_goStart + 7
+    
+    while (!(func[conter] == ")")) {
+        
+        rem += func[conter]
+        conter++
+    }    
+    
+    func = func.replace(`goBack(${rem})`,`continue ${rem}`)
+}
+return (eval(func))
 }
 
 /** @default
@@ -281,7 +335,7 @@ let pen = {
      */
     rectangle(){
         let SP = smallestHW()/1000
-        let div = this.style.innerHTML
+        let div = this.style.innerHTML.cloneNode(true)
         naf.dotNum++
         naf.penId.push(this.style.id)
         div.id = naf.dotNum
@@ -384,6 +438,11 @@ function abs(element) {
 function round(_num, amount=1){
     let a = 10**amount
     return(Math.round(_num*a)/a)
+}
+
+function floor(_num, amount=1){
+    let a = 10**amount
+    return(Math.floor(_num*a)/a)
 }
 
 /** @default
