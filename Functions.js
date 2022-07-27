@@ -465,9 +465,19 @@ function round(_num, amount=1){
     return(Math.round(_num*a)/a)
 }
 
-function floor(_num, amount=1){
-    let a = 10**amount
-    return(Math.floor(_num*a)/a)
+function floor(_num, amount=0){
+    let a = amount
+    let num = String(_num)
+    if(0<=a){
+        return( Number(num.slice(0, num.indexOf(".")+a+1)) )
+    }
+    else {
+        let b = ""
+        repeat(0-a,()=>{
+            b += "0"
+        })
+        return( Number(num.slice(0, num.indexOf(".")+a)+b) )
+    }
 }
 
 /** @default
