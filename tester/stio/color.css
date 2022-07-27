@@ -1,3 +1,12 @@
 *{
     -webkit-user-drag: none;
 }
+
+#style{
+
+    margin:0;
+    height:100px;
+    background:linear-gradient(to top right,transparent 50%, blue 51%) 0 0/20% 100% no-repeat,
+    linear-gradient(to top left,transparent 50%, blue 51%) 100% 0/calc(80% + 1px) 100% no-repeat;
+  
+}

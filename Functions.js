@@ -11,6 +11,7 @@ let enter = `
 `
 let space = " "
 
+
 /**@default
  * I need help with this
  */
@@ -20,16 +21,16 @@ let help = {
 }
 
 function sec(_num) {
-
+    
     return(_num * 1000)
-
+    
 }
 
 /** @default
  * You do NOT need this
  * naf = not a function
  */
- let naf = {
+let naf = {
     lineNum: 0,
     dotNum: 0,
     store: [],
@@ -45,7 +46,7 @@ function sec(_num) {
     coseineX: 0,
     sineX: 0,
     sineY: 0,
-
+    
     x:0,
     y:0,
     z:0,
@@ -55,54 +56,54 @@ function sec(_num) {
         this.y = _y
         this.z = _y
     },
-
+    
     eventList: [],
-
+    
     TenToHex(_color) {
         
         let color = mod(_color, 256)
-
+        
         let rem = "0123456789abcdef"
         return( ( rem[ Math.floor(color / 16) ] ) + ( rem[ Math.floor( mod(color, 16) ) ] ) )
     },
-
+    
     styleDiv(){
-
-
-
+        
+        
+        
     },
-
+    
     psButton:false,
     psButton1:false,
     psButton2:false,
     psButton3:false,
     psButton4:false,
-
+    
     imgName:[],
     imgSaves:[],
     soundName:[],
     soundSaves:[],
-
-    penId:[],
-
-func_Sleep(_func) {
-    let func = _func
-    let rem = ""
-    let rem_sleep = func.indexOf("sleep")
-    let conter = rem_sleep + 6
     
-    while (!(func[conter] == ")")) {
+    penId:[],
+    
+    func_Sleep(_func) {
+        let func = _func
+        let rem = ""
+        let rem_sleep = func.indexOf("sleep")
+        let conter = rem_sleep + 6
         
-        rem += func[conter]
-        conter++
-    }
-
-    func = func.slice(0, rem_sleep) + "setTimeout(()=>{" + func.slice(conter+1, func.length-1) + `},${sec(rem)})` + func[func.length-1]
+        while (!(func[conter] == ")")) {
+        
+            rem += func[conter]
+            conter++
+        }
+        
+        func = func.slice(0, rem_sleep) + "setTimeout(()=>{" + func.slice(conter+1, func.length-1) + `},${sec(rem)})` + func[func.length-1]
     return (func)
 },
 
 func_goStart(_func){
-let func = _func
+    let func = _func
     let rem = ""
     let rem_goStart = func.indexOf("goStart")
     let conter = rem_goStart + 8
@@ -113,9 +114,9 @@ let func = _func
         conter++
     }    
     
-func = func.slice(0, rem_goStart) + (`goStart(${rem})`,`
-let ${rem}a = true
-${rem}:while (${rem}a) {`) + func.slice(conter+1, func.length-1) + `${rem}a = false
+    func = func.slice(0, rem_goStart) + (`goStart(${rem})`,`
+    let ${rem}a = true
+    ${rem}:while (${rem}a) {`) + func.slice(conter+1, func.length-1) + `${rem}a = false
 }`+ func[func.length-1]
 return (func)
 },
@@ -136,7 +137,7 @@ makeAll(_func) {
         
         func = func.replace(`goBack(${rem})`,`continue ${rem}`)
     }
-
+    
     while (func.includes("goStart")||func.includes("sleep")) {
         if(func.lastIndexOf("sleep") < func.lastIndexOf("goStart")) {
             func = this.func_goStart(func)
@@ -145,7 +146,7 @@ makeAll(_func) {
             func = this.func_Sleep(func)
         }
     }
-
+    
     return(eval(func))
 }
 }
@@ -200,24 +201,24 @@ function setup({
         getElementById("all").style.backgroundColor = rgb(0,0,0)
         getElementById("all").style.color = rgb(255,255,255)
     }
-
+    
     if(!(pointer == false)){
         getElementById("all").style.cursor = pointer
     }
-
+    
     if(!touchAction){
         getElementById("all").style.touchAction = "none"
     }
-        
+    
     if(divPen){
         naf.makeDivId("pen")
     }
     let func = _func
-
+    
     if(extra_funcs){
         func = naf.makeAll(func)
     }
-
+    
     requestAnimationFrame(eval(func))
 }
 
@@ -232,11 +233,11 @@ function say(..._text) {
 
 /** @default
  *  repeat{
-        for (let i = 0; i < times; i++) {
-            text()
-        }
+ for (let i = 0; i < times; i++) {
+     text()
     }
- */
+}
+*/
 function forever(_func){
     let update = () => {
         _func()
@@ -260,33 +261,33 @@ let pen = {
             this.borderColor = rgb(255, 255, 255, 255);
         },
         reset(){
-
+            
             this.color = "#ff0000"
-
+            
             this.height = 100
-
+            
             this.width = 100
-
+            
             this.position = "absolute",
-
+            
             this.radius = "0%"
-
+            
             this.borderSize = 0
             
             this.borderColor = "#000000"
-
+            
             this.text = ""
-
+            
             this.textType = "none"
-
+            
             this.textSize = 50
-
+            
             this.innerHTML = doc.createElement("div")
-
+            
             this.id = "none"
-    
+            
         },
-
+        
         /** @default
          * you can set the color like this
          * color{
@@ -298,8 +299,8 @@ let pen = {
          * }
          */
         color: "#00000000",
-
-         /** @default
+        
+        /** @default
          * You can change the position type (default is absolute)
          * types of position{
          * absolute
@@ -312,27 +313,27 @@ let pen = {
         position: "absolute",
         
         width: 100,
-
+        
         height: 100,
-
+        
         radius: "0%",
-
+        
         borderSize: 0,
-
+        
         borderColor: "#000000",
-
+        
         text: "",
-
+        
         textType: "none",
-
+        
         textSize: 50,
-
+        
         innerHTML: doc.createElement("div"),
-
+        
         id: "none",
-
+        
     },
-
+    
     varReset(){
 
         this.rotation = 0
@@ -340,17 +341,17 @@ let pen = {
         this.y = 0
         
     },
-
+    
     rotation: 0,
     x: 0,
     y: 0,
-        
+    
     move(move){
         this.x += sin(this.rotation) * move
         this.y += sin(this.rotation - 90) * move
     },
-
-
+    
+    
     /** @default
      * Makes a rectangle on the html/website.
      * You can style the rectangle with pen.style."name on style"
@@ -361,7 +362,7 @@ let pen = {
         naf.dotNum++
         naf.penId.push(this.style.id)
         div.id = naf.dotNum
-
+        
         div.innerText = this.style.text
         div.style.font = this.style.textType
         div.style.fontSize = `${this.style.textSize*SP}px`
@@ -374,8 +375,8 @@ let pen = {
         div.style.borderRadius = this.style.radius
         div.style.border = `${this.style.borderSize*SP}px solid ${this.style.borderColor}`
         div.style.transform = "rotate("+ (this.rotation) +"deg)"
-
-
+        
+        
         document.getElementById("pen").appendChild(div)
     },
     clear(){
@@ -386,9 +387,9 @@ let pen = {
 }
 
 function getPenId(_id){
-
+    
     return(getElementById((naf.penId.indexOf(_id)+1)))
-
+    
 }
 
 /** @default
@@ -397,28 +398,28 @@ function getPenId(_id){
  * findes the cordinate between x1,y1 and x2,y2 wit the percent
  * 
  * lerp{
-        let percent = _percent * 2;
-        let x =  ((x1 * (2 - percent)) + (x2 * percent)) / 2;
-        return ( x );
- }
- */
+ let percent = _percent * 2;
+ let x =  ((x1 * (2 - percent)) + (x2 * percent)) / 2;
+ return ( x );
+}
+*/
 
 function lerp(a, b, _percent){
-
+    
     let percent = _percent * 2;
     let out =  ((a * (2 - percent)) + (b * percent)) / 2;
     
     return ( out );
-
+    
 }
 
 /** @default
  * Math
  * 
  *  cos{
-        return(Math.cos(element))
-    }
- * */
+ return(Math.cos(element))
+}
+* */
 function cos(element) {
     return(Math.cos(6.28 / 360 * element))
 }
@@ -427,12 +428,14 @@ function cos(element) {
  * Math
  * 
  *  sin{
-        return(Math.sin(element))
-    }
- * */
+ return(Math.sin(element))
+}
+* */
 function sin(element) {
     return(Math.sin(6.28 / 360 * element))
 }
+
+let invisible = rgb(255, 255, 255, 255)
 
 /** @default
  * Math
