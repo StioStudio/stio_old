@@ -4,9 +4,6 @@
 
 #style{
 
-    margin:0;
-    height:100px;
-    background:linear-gradient(to top right,transparent 50%, blue 51%) 0 0/20% 100% no-repeat,
-    linear-gradient(to top left,transparent 50%, blue 51%) 100% 0/calc(80% + 1px) 100% no-repeat;
-  
+    transform: translate3d(100px, 100px, 1000px) rotateX(100deg) rotateY(10deg) rotateZ(10deg);
+    
 }
