@@ -65,7 +65,7 @@ function makeTextGamepad(){
     pen.x = leftStick_X-100
     pen.y = 650
     pen.style.textSize = 20
-    pen.style.text = round(con.lX*1000000)/1000000
+    pen.style.text = floor(con.lX, 6)
     pen.rectangle()
     
     pen.y = 680
@@ -89,7 +89,7 @@ function makeTextGamepad(){
     pen.x = leftStick_X-300
     pen.y = 400
     pen.style.textSize = 20
-    pen.style.text = round(con.lY*1000000)/1000000
+    pen.style.text = floor(con.lY, 6)
     pen.rectangle()
     
     pen.y = 430
@@ -114,7 +114,7 @@ function makeTextGamepad(){
     pen.x = rigthStick_X-100
     pen.y = 650
     pen.style.textSize = 20
-    pen.style.text = round(con.rX*1000000)/1000000
+    pen.style.text = floor(con.rX, 6)
     pen.rectangle()
     
     pen.y = 680
@@ -139,7 +139,7 @@ function makeTextGamepad(){
     pen.x = rigthStick_X+230
     pen.y = 400
     pen.style.textSize = 20
-    pen.style.text = round(con.rY*1000000)/1000000
+    pen.style.text = floor(con.rY, 6) 
     pen.rectangle()
 
     
