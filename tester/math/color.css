@@ -8,8 +8,8 @@
 transform: 
 
   perspective(800px)
-  rotate3d(1, 0, 0, 0deg)
-  rotate3d(0, 1, 0, 0deg)
+  rotate3d(1, 0, 0, 325deg)
+  rotate3d(0, 1, 0, 30deg)
   rotate3d(0, 0, 1, 0deg)
 
 ;
