@@ -191,6 +191,7 @@ function setup({
     pointer = false,
     autoCSS = "none",
     extra_funcs = true,
+    show_mouse_position = false,
 } = {},_func = ()=>{}) {
     
     if(autoCSS == "purple") {
@@ -220,6 +221,20 @@ function setup({
     }
     
     requestAnimationFrame(eval(func))
+
+    if(show_mouse_position){
+        forever(()=>{
+            pen.clear()
+            pen.style.text = "mouse_X: " + floor(mouse_X) + enter + "mouse_Y: " + floor(mouse_Y)
+            pen.style.textSize = 30
+            pen.style.width = 200
+            pen.style.height = 70
+            pen.style.color = invisible
+            pen.x = mouse_X + 120
+            pen.y = mouse_Y + 40
+            pen.rectangle()
+        })
+    }
 }
 
 
@@ -661,13 +676,21 @@ addEventListener("pointerup", ()=>{
     mouseClick = false
 })
 
+let mouse_page_X = 0
+let mouse_page_Y = 0
+
 let mouse_X = 0
 let mouse_Y = 0
 
 addEventListener("pointermove",(e)=>{
-    mouse_X = e.pageX
-    mouse_Y = e.pageY
+    mouse_page_X = e.pageX
+    mouse_page_Y = e.pageY
+    let SP = smallestHW()/1000
+    mouse_X = e.pageX/SP
+    mouse_Y = e.pageY/SP
+
 })
+
 
 Array.prototype.remove = function(_num){
     let array = this.valueOf()

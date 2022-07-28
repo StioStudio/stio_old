@@ -12,7 +12,7 @@ Send, ^#{Left}
 Run, "C:\Users\espen\AppData\Local\Programs\Microsoft VS Code\Code.exe"
 Sleep, 5000
 Run, "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe"
-Sleep, 2000
+Sleep, 3000
 Send, {Tab}{Space}
 Sleep, 5000
 Run, "C:\Users\espen\Desktop\coding\apps\autokey\most_used\f1_switch..ahk"
