@@ -1,6 +1,7 @@
 *{
     -webkit-user-drag: none;
 }
+
 #example-element {
     width: 100px;
     height: 100px;

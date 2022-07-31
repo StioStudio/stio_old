@@ -32,7 +32,8 @@ function sec(_num) {
  */
 let naf = {
     lineNum: 0,
-    dotNum: 0,
+    penNum: 0,
+    pen3dNum: 0,
     store: [],
     storeName: [],
     penready: true,
@@ -85,6 +86,7 @@ let naf = {
     soundSaves:[],
     
     penId:[],
+    pen3dId:[],
     
     func_Sleep(_func) {
         let func = _func
@@ -187,6 +189,7 @@ function sleep(){}
  */
 function setup({
     divPen = true,
+    divPen3d = true,
     touchAction = true,
     pointer = false,
     autoCSS = "none",
@@ -214,6 +217,27 @@ function setup({
     if(divPen){
         naf.makeDivId("pen")
     }
+
+    if(divPen3d){
+        let div = doc.createElement('div')
+        div.id = "pen3d"
+
+        let ds = div.style
+        ds.transformStyle = "preserve-3d"
+        ds.transform = `
+        perspective(800px)
+        rotate3d(1, 0, 0, 0deg)
+        rotate3d(0, 1, 0, 0deg)
+        rotate3d(0, 0, 1, 0deg)
+        translateX(0px)
+        translateY(0px)
+        translateZ(0px)
+        `
+        ds.position = "absolute"
+
+        appendChild(div)
+    }
+
     let func = _func
     
     if(extra_funcs){
@@ -374,9 +398,9 @@ let pen = {
     rectangle(){
         let SP = smallestHW()/1000
         let div = this.style.innerHTML.cloneNode(true)
-        naf.dotNum++
+        naf.penNum++
         naf.penId.push(this.style.id)
-        div.id = naf.dotNum
+        div.id = naf.penNum
         
         div.innerText = this.style.text
         div.style.font = this.style.textType
@@ -384,9 +408,11 @@ let pen = {
         div.style.position = pen.style.position
         div.style.backgroundColor = pen.style.color
         div.style.height = pen.style.height*SP+"px"
-        div.style.width = pen.style.width*SP+"px"
+        div.style.width = this.style.width*SP+"px"
+
         div.style.top =  (this.y*SP - (this.style.height*SP / 2 + (this.style.borderSize*SP)))+"px"
         div.style.left = (this.x*SP - (this.style.width*SP / 2 + (this.style.borderSize*SP)))+"px"
+        
         div.style.borderRadius = this.style.radius
         div.style.border = `${this.style.borderSize*SP}px solid ${this.style.borderColor}`
         div.style.transform = "rotate("+ (this.rotation) +"deg)"
@@ -396,7 +422,7 @@ let pen = {
     },
     clear(){
         document.getElementById("pen").innerHTML = ""
-        naf.dotNum = 0
+        naf.penNum = 0
         naf.penId = []
     }
 }
@@ -404,6 +430,63 @@ let pen = {
 function getPenId(_id){
     
     return(getElementById((naf.penId.indexOf(_id)+1)))
+    
+}
+
+/** @default
+ * not done for now
+ */
+let pen3d = {
+    x: 0,
+    y: 0,
+    z: 0,
+    rotation_X: 0,
+    rotation_Y: 0,
+    rotation_Z: 0,
+    style:{
+        position: "absolute",
+        height:100,
+        width:100,
+        id:"none",
+        color: rgb(255,0,0),
+        x: 0,
+        y: 0,
+        z: 0,
+        rotation_X: 0,
+        rotation_Y: 0,
+        rotation_Z: 0,
+    },
+    rectangle(){
+        let SP = smallestHW()/1000
+        //let div = this.style.innerHTML.cloneNode(true)
+        let div = doc.createElement("div")
+        let ds = div.style
+        naf.pen3dNum++
+        naf.penId.push(this.style.id)
+        div.id = naf.pen3dNum
+        
+        ds.backgroundColor = this.style.color
+        ds.height = this.style.height+"px"
+        ds.width = this.style.width+"px"
+
+        ds.position = "absolute"
+        ds.transform = `
+        rotate3d(1, 0, 0, ${this.style.rotation_X}deg)
+        rotate3d(0, 1, 0, ${this.style.rotation_Y}deg)
+        rotate3d(0, 0, 1, ${this.style.rotation_Z}deg)
+        translateX(${this.style.x}px)
+        translateY(${this.style.y}px)
+        translateZ(${this.style.z}px)
+        `
+                
+        doc.getElementById("pen3d").appendChild(div)
+
+    },
+}
+
+function getPen3dId(_id){
+    
+    return(getElementById((naf.pen3dId.indexOf(_id)+1)))
     
 }
 

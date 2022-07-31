@@ -3,11 +3,12 @@ setup({},()=>{
 
 sleep(1)
 
-let div = doc.createElement('div')
-let ds = div.style
 
-ds.transform = "matrix3d()"
+pen3d.rectangle()
 
-appendChild(div)
+pen3d.style.color = rgb(0,255,0)
+pen3d.rectangle()
 
 })
+
+
