@@ -233,8 +233,6 @@ function setup({
         translateY(0px)
         translateZ(0px)
         `
-        ds.position = "absolute"
-
         appendChild(div)
     }
 
@@ -471,9 +469,9 @@ let pen3d = {
 
         ds.position = "absolute"
         ds.transform = `
-        rotate3d(1, 0, 0, ${this.style.rotation_X}deg)
-        rotate3d(0, 1, 0, ${this.style.rotation_Y}deg)
-        rotate3d(0, 0, 1, ${this.style.rotation_Z}deg)
+        rotateX(${this.style.rotation_X}deg)
+        rotateY(${this.style.rotation_Y}deg)
+        rotateZ(${this.style.rotation_Z}deg)
         translateX(${this.style.x}px)
         translateY(${this.style.y}px)
         translateZ(${this.style.z}px)
