@@ -89,6 +89,8 @@ let naf = {
     imgSaves:[],
     soundName:[],
     soundSaves:[],
+    objName:[],
+    obj:[],
     
     penId:[],
     pen3dId:[],
@@ -451,6 +453,7 @@ function getPenId(_id){
     
 }
 
+
 /** @default
  * not done for now
  */
@@ -699,6 +702,51 @@ function LoadSound(url) {
 
 //////////////////////////////////////
 
+let obj = {
+    save(objName, obj){
+        naf.objName.push(objName)
+        naf.obj.push(obj)
+    },
+    get(objName){
+        if(naf.objName.includes(objName)){
+            return(naf.obj[naf.objName.indexOf(objName)])
+        }
+        return(undefined)
+    },
+    getClone(objName,deep=true){
+        let rem = naf.obj[naf.objName.indexOf(objName)]
+        if(!(rem instanceof Element)){
+            console.error("You can only clone elements")
+            return
+        }
+        if(naf.objName.includes(objName)){
+            return(rem.cloneNode(deep))
+        }
+        return(undefined)
+    },
+    update(objName){
+        let rem = naf.obj[naf.objName.indexOf(objName)];
+        if(rem instanceof Element){
+            rem.style.backgroundColor = this.style.color
+        }
+    },
+    append(objName,clone=false,deep=true){
+        let rem = naf.obj[naf.objName.indexOf(objName)];
+        if(clone){
+            rem = rem.cloneNode(deep)
+        }
+        getElementById("all").append(rem)
+    },
+    style:{
+        color: rgb(0,0,0,0)
+    },
+    img:{
+        loadImage(objName){
+            let rem = naf.objName.indexOf(objName)
+            naf.obj[rem] = LoadImage(naf.obj[rem])
+        }
+    }
+}
 
 let img = {
     save(_imgName, _imgUrl){
@@ -713,7 +761,7 @@ let img = {
     }
 }
 
-let sound = {
+let snd = {
     save(_soundName, _soundUrl){
        naf.soundName.push(_soundName)
        naf.soundSaves.push(LoadSound(_soundUrl)) 
@@ -724,20 +772,20 @@ let sound = {
 
     play(_soundName, {loop = false} = {})
     {
-        var snd = sound.get(_soundName);
+        var snd = snd.get(_soundName);
         snd.loop = loop != null ? loop : false;
         snd.play()
     },
 
     pause(_soundName)
     {
-        sound.get(_soundName).pause()
+        snd.get(_soundName).pause()
     },
 
 }
 
 function rgb(red=0, green=0, blue=0, transparency = 0){
-    return("#" + naf.TenToHex(red) + naf.TenToHex(green) + naf.TenToHex(blue) + (naf.TenToHex(255-transparency)))
+    return("#" + naf.TenToHex(red) + naf.TenToHex(green) + naf.TenToHex(blue) + (naf.TenToHex(transparency)))
 }
 
 function createElement(_element){
