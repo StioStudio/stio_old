@@ -5,23 +5,14 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 
 #r::Reload
 
-up::
-MouseGetPos, mouseX, mouseY
-MouseMove, mouseX, mouseY - 10, 10
+F10::
+InputBox, output, Title, Prompt, Show, 100, 100, 500, 500, 480, 500
 Return
 
-Down::
-MouseGetPos, mouseX, mouseY
-MouseMove, mouseX, mouseY + 10, 10
+F9::
+MouseGetPos, X, Y
+
+Send, %TransColor%
 Return
 
-Left::
-MouseGetPos, mouseX, mouseY
-MouseMove, mouseX - 10, mouseY, 10
-Return
-
-Right::
-MouseGetPos, mouseX, mouseY
-MouseMove, mouseX + 10, mouseY, 10
-Return
 

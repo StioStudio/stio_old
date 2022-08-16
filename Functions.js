@@ -11,6 +11,10 @@ let enter = `
 `
 let space = " "
 
+let date = new Date
+forever(()=>{
+    date = new Date
+})
 
 /**@default
  * I need help with this
@@ -74,6 +78,7 @@ let naf = {
         
     },
     
+    psAlradyConnected: false,
     psButton:false,
     psButton1:false,
     psButton2:false,
@@ -87,6 +92,8 @@ let naf = {
     
     penId:[],
     pen3dId:[],
+
+    timer: date.getTime(),
     
     func_Sleep(_func) {
         let func = _func
@@ -287,6 +294,19 @@ function repeat(times, _func) {
     for (let i = 0; i < times; i++) {
         _func()
     }
+}
+
+
+
+let timer = 0
+
+forever(()=>{
+    timer = date.getTime()-naf.timer 
+})
+
+function restartTimer(){
+    naf.timer = date.getTime()
+    timer = 0
 }
 
 let pen = {
@@ -844,6 +864,7 @@ win.con3 = con
 win.con4 = con
 win.cons = {con1,con2,con3,con4}
 
+
 addEventListener("gamepadconnected", ()=>{
     win.getGamepads = nav.getGamepads()
     if (!(undefined == win.getGamepads[3])){
@@ -858,11 +879,14 @@ addEventListener("gamepadconnected", ()=>{
     if (!(undefined == win.getGamepads[0])){
         conPrimary = 0
     }
-    forever(()=>{
     
-    win.getGamepads = nav.getGamepads()
-
-    function conF(conNum) {
+    if(!naf.psAlradyConnected){
+    naf.psAlradyConnected = true
+    forever(()=>{
+        
+        win.getGamepads = nav.getGamepads()
+        
+        function conF(conNum) {
         return{
             
             name: getGamepads[conNum].id,
@@ -873,21 +897,21 @@ addEventListener("gamepadconnected", ()=>{
             circle: getGamepads[conNum].buttons[1].value,
             square: getGamepads[conNum].buttons[2].value,
             triangle: getGamepads[conNum].buttons[3].value,
-
+            
             l1: getGamepads[conNum].buttons[4].value,
             l2: getGamepads[conNum].buttons[6].value,
             l3: getGamepads[conNum].buttons[10].value,
-
+            
             r1: getGamepads[conNum].buttons[5].value,
             r2: getGamepads[conNum].buttons[7].value,
             r3: getGamepads[conNum].buttons[11].value,
             
             rX: getGamepads[conNum].axes[2],
             rY: getGamepads[conNum].axes[3],
-
+            
             lX: getGamepads[conNum].axes[0],
             lY: getGamepads[conNum].axes[1],
-
+            
             arrow_Up: getGamepads[conNum].buttons[12].value,
             arrow_Down: getGamepads[conNum].buttons[13].value,
             arrow_Left: getGamepads[conNum].buttons[14].value,
@@ -961,9 +985,76 @@ forever(()=>{
         if(con4.ps)eventer.send("psPress", 4)
     }
 })
-eventer.listen("psDown",()=>{
+
+let psButtonStart = false
+let psButtonTimes = 0
+eventer.listen("psDown",(e)=>{
+
+    if(!psButtonStart){
+        psButtonStart = true
+        psButtonTimes = 0
+        restartTimer()
+    }
 
 })
+
+eventer.listen("psUp",(e)=>{
+    if(psButtonStart){
+        psButtonTimes++
+        if(timer >= 1500){
+            psButtonStart = false
+        }
+        if(psButtonTimes == 3){
+            psButtonTimes = 0
+            if(e-1 == true){
+                conPrimary = 0
+            }
+            if(e-1 == true){
+                conPrimary = 1
+            }
+            if(e-1 == true){
+                conPrimary = 2
+            }
+            if(e-1 == true){
+                conPrimary = 3
+            }
+        }
+    }
+})
+    
+    /**@default
+     * når ned strat timer
+     * vis (timer < 1500 ms)
+     * trykk på psUp 3 ganger for å sette til primary
+     */
+
+
+/*
+    if(timer > 1500||psButtonTimes == 3){
+        if(psButtonTimes == 3){
+            psButtonTimes = 0
+            if(e-1 == true){
+                conPrimary = 0
+            }
+            if(e-1 == true){
+                conPrimary = 1
+            }
+            if(e-1 == true){
+                conPrimary = 2
+            }
+            if(e-1 == true){
+                conPrimary = 3
+            }
+        }
+        psButtonStart = true
+        psButtonTimes = 0
+        restartTimer()
+    }
+    psButtonTimes++
+    say(psButtonTimes)
+*/
+}
+
 })
 
 

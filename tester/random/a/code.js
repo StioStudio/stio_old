@@ -1,0 +1,2 @@
+
+say(navigator.bluetooth)
