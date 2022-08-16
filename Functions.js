@@ -707,6 +707,12 @@ let obj = {
         naf.objName.push(objName)
         naf.obj.push(obj)
     },
+    getWithNum(num){
+        if(naf.objName[num] == undefined){
+            return(undefined)
+        }
+        return(naf.obj[num])
+    },
     get(objName){
         if(naf.objName.includes(objName)){
             return(naf.obj[naf.objName.indexOf(objName)])
@@ -727,8 +733,54 @@ let obj = {
     update(objName){
         let rem = naf.obj[naf.objName.indexOf(objName)];
         if(rem instanceof Element){
-            rem.style.backgroundColor = this.style.color
+            //let rem = document.createElement("div")
+            let rem_s = rem.style
+            let ts = this.style
+            rem.id = this.style.id
+            rem_s.backgroundColor = ts.color
+            rem_s.position = ts.position
+            rem_s.width = `${ts.width}px`
+            rem_s.height = `${ts.height}px`
+            rem_s.borderRadius = `${ts.radius}px`
+            rem_s.border = `${ts.borderSize}px solid ${ts.borderColor}`
+            rem.innerText = ts.text
+            rem_s.font = ts.textType
+            rem_s.fontSize = `${ts.textSize}px`
+            rem_s.innerHTML = ts.element
+            rem_s.transform = `rotate(${ts.rotation}deg)`
+            rem_s.left = `${ts.x}px`
+            rem_s.top = `${ts.y}px`
+
+            return
         }
+        console.error("You can only style elements")
+    },
+    style:{
+        color: "#00000000",
+        position: "absolute",
+        
+        width: 100,
+        
+        height: 100,
+        
+        radius: "0%",
+        
+        borderSize: 0,
+        
+        borderColor: "#000000",
+        
+        text: "",
+        
+        textType: "none",
+        
+        textSize: 50,
+        
+        element: doc.createElement("div"),
+        
+        id: "none",
+        rotation: 0,
+        x: 0,
+        y: 0,
     },
     append(objName,clone=false,deep=true){
         let rem = naf.obj[naf.objName.indexOf(objName)];
@@ -737,14 +789,26 @@ let obj = {
         }
         getElementById("all").append(rem)
     },
-    style:{
-        color: rgb(0,0,0,0)
-    },
     img:{
-        loadImage(objName){
+        load(objName){
             let rem = naf.objName.indexOf(objName)
             naf.obj[rem] = LoadImage(naf.obj[rem])
         }
+    },
+    snd:{
+        load(objName){
+            let rem = naf.objName.indexOf(objName)
+            naf.obj[rem] = LoadSound(naf.obj[rem])
+        },
+        play(objName, {loop = false} = {}){
+            //let snd = document.createElement("audio")
+            let snd = naf.obj[naf.objName.indexOf(objName)]
+            snd.loop = loop != null ? loop : false;
+            snd.play()
+        },
+        pause(objName){
+            naf.obj[naf.objName.indexOf(objName)].pause()
+        },
     }
 }
 
@@ -784,7 +848,7 @@ let snd = {
 
 }
 
-function rgb(red=0, green=0, blue=0, transparency = 0){
+function rgb(red=0, green=0, blue=0, transparency = 255){
     return("#" + naf.TenToHex(red) + naf.TenToHex(green) + naf.TenToHex(blue) + (naf.TenToHex(transparency)))
 }
 
