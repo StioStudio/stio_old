@@ -1,2 +1,5 @@
 
-say(navigator.bluetooth)
+let nn = {
+
+}
+

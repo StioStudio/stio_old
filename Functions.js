@@ -198,14 +198,20 @@ function sleep(){}
  */
 function setup({
     divPen = true,
-    divPen3d = true,
+    divPen3d = false,
     touchAction = true,
     pointer = false,
     autoCSS = "none",
     extra_funcs = true,
     show_mouse_position = false,
+    autoObj = true,
 } = {},_func = ()=>{}) {
     
+    if(autoObj){
+        obj.save("div",createElement("div"));
+        obj.save("link:setup","")
+    }
+
     if(autoCSS == "purple") {
         getElementById("all").style.backgroundColor = rgb(138,60,138)
         getElementById("all").style.color = rgb(255,255,255)
