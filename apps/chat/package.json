@@ -4,7 +4,7 @@
   "description": "chat bro",
   "main": "server.js",
   "scripts": {
-    "start": "node ."
+    "start": "nodemon start"
   },
   "author": "stio",
   "license": "ISC",

@@ -195,24 +195,14 @@ function setup({
     
     if(autoObj){
         //
-        let rem_link;
         obj.save("div",createElement("div"));
         //
-        rem_link = cutLink(link)
-        rem_link = rem_link.slice(3,rem_link.length - 3)
-        let rem = ""
-        repeat(rem_link.length,()=>{
-            rem = rem + "../"
-        });
-        obj.save("link:back",rem)
+        obj.save("img",createElement("img"));
         //
-        obj.save("link:functions",rem+"Functions.js")
+        obj.save("audio",createElement("audio"))
         //
-        obj.save("link:resurser",rem+"resurser")
+        obj.save("canvas",createElement("canvas"));
         //
-        obj.save("link:homescreen",rem+"homescreen")
-        //
-        obj.save("link:apps",rem+"apps")
     }
 
     if(autoCSS == "purple") {
@@ -738,9 +728,13 @@ let obj = {
             naf.obj.push(obj)
         }
     },
-    clone(objName, NEWobjname){
+    clone(NEWobjname, objName){
+        let rem = naf.obj[naf.objName.indexOf(objName)]
         naf.objName.push(NEWobjname)
-        naf.obj.push(naf.obj[naf.objName.indexOf(objName)])
+        if(rem instanceof Element){
+            rem.cloneNode(true)
+        }
+        naf.obj.push(rem)
     },
     rename(objName, NEWobjname){
         naf.objName[naf.indexOf(objName)] = NEWobjname

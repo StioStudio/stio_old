@@ -1,9 +1,9 @@
 //setup({},()=>{
 
-const socket = io('http://localhost:3000')
+const socket = io('http://localhost:1234')
 
 socket.on('chat-meassge', data => {
-    say(data)
+    console.log(data)
 })
 
 //})
