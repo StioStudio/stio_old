@@ -194,8 +194,25 @@ function setup({
 } = {},_func = ()=>{}) {
     
     if(autoObj){
+        //
+        let rem_link;
         obj.save("div",createElement("div"));
-        obj.save("link:setup","")
+        //
+        rem_link = cutLink(link)
+        rem_link = rem_link.slice(3,rem_link.length - 3)
+        let rem = ""
+        repeat(rem_link.length,()=>{
+            rem = rem + "../"
+        });
+        obj.save("link:back",rem)
+        //
+        obj.save("link:functions",rem+"Functions.js")
+        //
+        obj.save("link:resurser",rem+"resurser")
+        //
+        obj.save("link:homescreen",rem+"homescreen")
+        //
+        obj.save("link:apps",rem+"apps")
     }
 
     if(autoCSS == "purple") {
@@ -694,7 +711,22 @@ function LoadSound(url) {
 
 //////////////////////////////////////
 
+let link = document.URL
+
+function cutLink(_link) {
+    let rem = _link
+    if(rem[rem.length-1] == "/"){
+        rem = rem.slice(0, rem.length-1)
+    }
+    rem = rem.split("/")
+    return(rem)
+}
+
 let obj = {
+    open(objName){
+        let rem = naf.obj[naf.objName.indexOf(objName)]
+        open(rem)
+    },
     save(objName, obj){
         if(naf.objName.includes(objName)){
             let rem = naf.objName.indexOf(objName)
