@@ -696,8 +696,19 @@ function LoadSound(url) {
 
 let obj = {
     save(objName, obj){
-        naf.objName.push(objName)
-        naf.obj.push(obj)
+        if(naf.objName.includes(objName)){
+            let rem = naf.objName.indexOf(objName)
+            naf.objName[rem] = objName
+            naf.obj[rem] = obj
+        }
+        else{
+            naf.objName.push(objName)
+            naf.obj.push(obj)
+        }
+    },
+    clone(objName, NEWobjname){
+        naf.objName.push(NEWobjname)
+        naf.obj.push(naf.obj[naf.objName.indexOf(objName)])
     },
     getWithNum(num){
         if(naf.objName[num] == undefined){
