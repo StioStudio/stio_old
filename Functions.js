@@ -768,7 +768,11 @@ let obj = {
             //let rem = document.createElement("div")
             let rem_s = rem.style
             let ts = this.style
-            rem.id = this.style.id
+            rem.id = this.id
+            rem.classList.add("obj")
+            repeat(this.class.length,()=>{
+                rem.classList.add(this.class.pop());
+            })
             rem_s.backgroundColor = ts.color
             rem_s.position = ts.position
             rem_s.width = `${ts.width}px`
@@ -782,13 +786,21 @@ let obj = {
             rem_s.transform = `rotate(${ts.rotation}deg)`
             rem_s.left = `${ts.x}px`
             rem_s.top = `${ts.y}px`
-
+            
             return
         }
         console.error("You can only style elements")
     },
+    id: "none",
+    class: [],
+    deleteClass(_className){
+        this.class[this.class.indexOf(_className)] = ""
+    },
+    addClass(_className){
+        this.class.push(_className)
+    },
     style:{
-        color: "#00000000",
+        color: "#ff0000",
         position: "absolute",
         
         width: 100,
@@ -809,7 +821,6 @@ let obj = {
         
         element: document.createElement("div"),
         
-        id: "none",
         rotation: 0,
         x: 0,
         y: 0,
