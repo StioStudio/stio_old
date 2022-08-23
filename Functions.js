@@ -710,6 +710,9 @@ let obj = {
         naf.objName.push(NEWobjname)
         naf.obj.push(naf.obj[naf.objName.indexOf(objName)])
     },
+    rename(objName, NEWobjname){
+        naf.objName[naf.indexOf(objName)] = NEWobjname
+    },
     getWithNum(num){
         if(naf.objName[num] == undefined){
             return(undefined)
