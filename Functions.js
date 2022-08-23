@@ -766,6 +766,7 @@ let obj = {
         let rem = naf.obj[naf.objName.indexOf(objName)];
         if(rem instanceof Element){
             //let rem = document.createElement("div")
+            let SP = smallestHW()/1000
             let rem_s = rem.style
             let ts = this.style
             rem.id = this.id
@@ -775,17 +776,16 @@ let obj = {
             })
             rem_s.backgroundColor = ts.color
             rem_s.position = ts.position
-            rem_s.width = `${ts.width}px`
-            rem_s.height = `${ts.height}px`
+            rem_s.width = `${ts.width*SP}px`
+            rem_s.height = `${ts.height*SP}px`
             rem_s.borderRadius = `${ts.radius}px`
-            rem_s.border = `${ts.borderSize}px solid ${ts.borderColor}`
+            rem_s.border = `${ts.borderSize*SP}px solid ${ts.borderColor}`
             rem.innerText = ts.text
             rem_s.font = ts.textType
-            rem_s.fontSize = `${ts.textSize}px`
-            rem_s.innerHTML = ts.element
+            rem_s.fontSize = `${ts.textSize*SP}px`
             rem_s.transform = `rotate(${ts.rotation}deg)`
-            rem_s.left = `${ts.x}px`
-            rem_s.top = `${ts.y}px`
+            rem_s.left = `${ts.x*SP - (this.style.width*SP / 2 + (this.style.borderSize*SP))}px`
+            rem_s.top = `${ts.y*SP - (this.style.height*SP / 2 + (this.style.borderSize*SP))}px`
             
             return
         }
@@ -818,9 +818,7 @@ let obj = {
         textType: "none",
         
         textSize: 50,
-        
-        element: document.createElement("div"),
-        
+                
         rotation: 0,
         x: 0,
         y: 0,
