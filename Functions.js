@@ -732,7 +732,7 @@ let obj = {
         let rem = naf.obj[naf.objName.indexOf(objName)]
         naf.objName.push(NEWobjname)
         if(rem instanceof Element){
-            rem.cloneNode(true)
+            rem = rem.cloneNode(true)
         }
         naf.obj.push(rem)
     },
