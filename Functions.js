@@ -1,10 +1,4 @@
 
-let doc = document
-
-let nav = navigator
-
-let win = window
-
 let nothing = ""
 
 let enter = `
@@ -15,14 +9,6 @@ let date = new Date
 forever(()=>{
     date = new Date
 })
-
-/**@default
- * I need help with this
- */
-let help = {
-    img: "help",
-    sound: "help",
-}
 
 function sec(_num) {
     
@@ -163,10 +149,10 @@ makeAll(_func) {
 }
 
 function smallestHW(){
-    if(win.innerHeight <= win.innerWidth){
-        return(win.innerHeight)
+    if(window.innerHeight <= window.innerWidth){
+        return(window.innerHeight)
     }
-    return(win.innerWidth)
+    return(window.innerWidth)
 }
 
 function percent(a,b){
@@ -183,7 +169,7 @@ function makeFunc(...toFunc){
 }
 
 function getElementById(_id) {
-    return(doc.getElementById(_id))
+    return(document.getElementById(_id))
 }
 
 function goStart(){}
@@ -234,7 +220,7 @@ function setup({
     }
 
     if(divPen3d){
-        let div = doc.createElement('div')
+        let div = document.createElement('div')
         div.id = "pen3d"
 
         let ds = div.style
@@ -293,9 +279,9 @@ function say(..._text) {
 function forever(_func){
     let update = () => {
         _func()
-        requestAnimationFrame(update)
+        window.requestAnimationFrame(update)
     }
-    requestAnimationFrame(update)
+    window.requestAnimationFrame(update)
 }
 
 function repeat(times, _func) {
@@ -347,7 +333,7 @@ let pen = {
             
             this.textSize = 50
             
-            this.innerHTML = doc.createElement("div")
+            this.innerHTML = document.createElement("div")
             
             this.id = "none"
             
@@ -393,7 +379,7 @@ let pen = {
         
         textSize: 50,
         
-        innerHTML: doc.createElement("div"),
+        innerHTML: document.createElement("div"),
         
         id: "none",
         
@@ -486,7 +472,7 @@ let pen3d = {
     rectangle(){
         let SP = smallestHW()/1000
         //let div = this.style.innerHTML.cloneNode(true)
-        let div = doc.createElement("div")
+        let div = document.createElement("div")
         let ds = div.style
         naf.pen3dNum++
         naf.penId.push(this.style.id)
@@ -506,7 +492,7 @@ let pen3d = {
         translateZ(${this.style.z}px)
         `
                 
-        doc.getElementById("pen3d").appendChild(div)
+        document.getElementById("pen3d").appendChild(div)
 
     },
 }
@@ -781,7 +767,7 @@ let obj = {
         
         textSize: 50,
         
-        element: doc.createElement("div"),
+        element: document.createElement("div"),
         
         id: "none",
         rotation: 0,
@@ -827,7 +813,7 @@ let img = {
         if(naf.imgName.includes(_imgName)){
             return(naf.imgSaves[naf.imgName.indexOf(_imgName)])
         }
-        return(doc.createElement("img"))
+        return(document.createElement("img"))
     }
 }
 
@@ -859,10 +845,10 @@ function rgb(red=0, green=0, blue=0, transparency = 255){
 }
 
 function createElement(_element){
-    return(doc.createElement(_element))
+    return(document.createElement(_element))
 }
 function appendChild(_element){
-    doc.getElementById("all").appendChild(_element)
+    document.getElementById("all").appendChild(_element)
 }
 
 let eventer = {
@@ -940,7 +926,7 @@ addEventListener("keyup",(e)=>{
 })
 
 
-win.getGamepads = nav.getGamepads()
+window.getGamepads = navigator.getGamepads()
 let con ={
     name: "none",
     active: false,
@@ -976,25 +962,25 @@ let con ={
     touchPad: 0,
 }
 let conPrimary = 0
-win.con1 = con
-win.con2 = con
-win.con3 = con
-win.con4 = con
-win.cons = {con1,con2,con3,con4}
+window.con1 = con
+window.con2 = con
+window.con3 = con
+window.con4 = con
+window.cons = {con1,con2,con3,con4}
 
 
 addEventListener("gamepadconnected", ()=>{
-    win.getGamepads = nav.getGamepads()
-    if (!(undefined == win.getGamepads[3])){
+    window.getGamepads = navigator.getGamepads()
+    if (!(undefined == window.getGamepads[3])){
         conPrimary = 3
     }
-    if (!(undefined == win.getGamepads[2])){
+    if (!(undefined == window.getGamepads[2])){
         conPrimary = 2
     }
-    if (!(undefined == win.getGamepads[1])){
+    if (!(undefined == window.getGamepads[1])){
         conPrimary = 1 
     }
-    if (!(undefined == win.getGamepads[0])){
+    if (!(undefined == window.getGamepads[0])){
         conPrimary = 0
     }
     
@@ -1002,7 +988,7 @@ addEventListener("gamepadconnected", ()=>{
     naf.psAlradyConnected = true
     forever(()=>{
         
-        win.getGamepads = nav.getGamepads()
+        window.getGamepads = navigator.getGamepads()
         
         function conF(conNum) {
         return{
@@ -1042,19 +1028,19 @@ addEventListener("gamepadconnected", ()=>{
         }
     }
 
-    if (!(undefined == win.getGamepads[0])){
-        win.con1 = conF(0) 
+    if (!(undefined == window.getGamepads[0])){
+        window.con1 = conF(0) 
     }
-    if (!(undefined == win.getGamepads[1])){
-        win.con2 = conF(1) 
+    if (!(undefined == window.getGamepads[1])){
+        window.con2 = conF(1) 
     }
-    if (!(undefined == win.getGamepads[2])){
-        win.con3 = conF(2) 
+    if (!(undefined == window.getGamepads[2])){
+        window.con3 = conF(2) 
     }
-    if (!(undefined == win.getGamepads[3])){
-        win.con4 = conF(3) 
+    if (!(undefined == window.getGamepads[3])){
+        window.con4 = conF(3) 
     }
-    win.cons = {con1,con2,con3,con4}
+    window.cons = {con1,con2,con3,con4}
     con = conF(conPrimary)
 })
 forever(()=>{
@@ -1174,5 +1160,7 @@ eventer.listen("psUp",(e)=>{
 }
 
 })
+
+
 
 
