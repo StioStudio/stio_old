@@ -1,9 +1,10 @@
 setup({
-say_code:true,
 },()=>{
 
-sleep(10)
-say("hi")
+sleep(1)
+
+obj.save("img","/StioStudio.github.io/resurser/bilder/Epple.gif")
+obj.append("img")
 
 })
 
