@@ -18,10 +18,19 @@
     <meta property='og:image:height' content='300' />
     <meta property='og:image:alt' content='A pixel art image of a red apple' />
 
+    <link rel="stylesheet" href="./../src/sidebar/">
+
 </head>
 <body>
     <script type="module" src="./code.js"></script>
 
+    <div class="settings">
+        <div class="sidebar">
+            <iframe class="make100" src="./../src/sidebar/sidebar.html"></iframe>
+        </div>
+        <img class="menu" onclick="menu()" src="./../src/sidebar/menu.svg" alt="MENU">
+    </div>
+    <script src="./../src/sidebar/menu.js"></script>
     
 
 </body>
